@@ -10,21 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "member")
+@Table(name="food_container")
 @Getter
 @Setter
 @ToString
-public class Member {
+public class FoodContainer {
     @Id
-    private int member_id;
+    private int container_id;
     @Column
-    private String first_name;
+    private String name;
     @Column
-    private String last_name;
+    private String type;
+    @Column
+    private int lng;
+    @Column
+    private int lat;
     @Column
     private String address;
     @Column
-    private String email;
-    @Column
-    private String pass;
+    private double weight;
 }
+
