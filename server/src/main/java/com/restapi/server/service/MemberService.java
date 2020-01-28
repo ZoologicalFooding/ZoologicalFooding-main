@@ -7,5 +7,5 @@ public interface MemberService {
     Iterable<Member> getAllMembers();
     Member getMemberById(int id);
     void deleteMemberById(int id);
-    void updateMemberById(Member rp,int id);
+    void updateMemberById(Member mem,int id);
 }

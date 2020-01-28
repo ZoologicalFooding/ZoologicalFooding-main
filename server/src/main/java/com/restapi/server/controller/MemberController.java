@@ -32,5 +32,16 @@ public class MemberController {
         memberService.addMember(member);
         return ResponseEntity.ok(member);
     }
-    
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteMember/{id}")
+    public ResponseEntity<Member> deleteRecipesRest(@PathVariable int id) {
+        Member mem = memberService.getMemberById(id);
+        memberService.deleteMemberById(id);
+        return ResponseEntity.ok(mem);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/editMember/{id}")
+    public ResponseEntity<Member> updateRecipesRest(@RequestBody(required = false) Member mem, @PathVariable int id) {
+        memberService.updateMemberById(mem,id);
+        return ResponseEntity.ok(mem);
+    }
 }

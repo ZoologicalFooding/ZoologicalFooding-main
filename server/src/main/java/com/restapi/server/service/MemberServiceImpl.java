@@ -30,12 +30,16 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
-    public void deleteMemberById(int id) {
-
-    }
+    public void deleteMemberById(int id) { memberDao.deleteById(id); }
 
     @Override
-    public void updateMemberById(Member rp, int id) {
-
+    public void updateMemberById(Member mem, int id) {
+        Member oldMember = memberDao.findById(id).get();
+        oldMember.setFirst_name(mem.getFirst_name());
+        oldMember.setLast_name(mem.getLast_name());
+        oldMember.setAddress(mem.getAddress());
+        oldMember.setEmail(mem.getEmail());
+        oldMember.setPass(mem.getPass());
+        memberDao.save(oldMember);
     }
 }
