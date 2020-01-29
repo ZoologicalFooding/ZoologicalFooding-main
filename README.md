@@ -17,8 +17,6 @@ Onur TETIK:
 - I will write get and post http request links. etc. http:localhost/members, http:localhost/foodcontainer, http:localhost/members?id=1, http:localhost/foodcontainer?id=1.
 I will test this links with Postman.
 
-
-
 Muharrem Tolga ACAR:
 - Creating register and login page 
 - Listing all containers in a table
