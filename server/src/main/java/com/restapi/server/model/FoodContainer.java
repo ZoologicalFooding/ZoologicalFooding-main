@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="food_container")
@@ -16,6 +13,7 @@ import javax.persistence.Table;
 @ToString
 public class FoodContainer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int container_id;
     @Column
     private String name;
