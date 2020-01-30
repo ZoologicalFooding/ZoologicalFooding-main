@@ -13,8 +13,12 @@ import javax.persistence.*;
 @ToString
 public class Member {
     @Id
-    @Column(name = "member_id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "member_generator")
+    @SequenceGenerator(
+            name = "member_generator",
+            sequenceName = "member_sequence",
+            initialValue = 10
+    )
     private int member_id;
     @Column
     private String first_name;

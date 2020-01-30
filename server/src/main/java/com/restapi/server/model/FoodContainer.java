@@ -13,8 +13,12 @@ import javax.persistence.*;
 @ToString
 public class FoodContainer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "container_id", unique = true, nullable = false)
+    @GeneratedValue(generator = "foodcontainer_generator")
+    @SequenceGenerator(
+            name = "foodcontainer_generator",
+            sequenceName = "foodcontainer_sequence",
+            initialValue = 10
+    )
     private int container_id;
     @Column
     private String name;
