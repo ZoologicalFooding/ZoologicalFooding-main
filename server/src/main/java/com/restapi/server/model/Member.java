@@ -13,6 +13,7 @@ import javax.persistence.*;
 @ToString
 public class Member {
     @Id
+    @Column(name = "member_id", columnDefinition = "serial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int member_id;
     @Column

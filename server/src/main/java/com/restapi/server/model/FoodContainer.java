@@ -13,7 +13,8 @@ import javax.persistence.*;
 @ToString
 public class FoodContainer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "container_id", unique = true, nullable = false)
     private int container_id;
     @Column
     private String name;
