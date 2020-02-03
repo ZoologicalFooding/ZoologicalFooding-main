@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="containers-table">
+
+                <tr>
+                    <th>Container id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Longitude</th>
+                    <th>Latitude</th>
+                    <th>Address</th>
+                    <th>Weight</th>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            // show list of containers on first load
+            showContainers();
+
+        });
+
+        // function to show list of containers
+        function showContainers() {
+
+            // get list of containers from the API
+            $.getJSON("http://restservices496.herokuapp.com/containers", function (data) {
+                var container_data = '';
+                $.each(data, function(key,value){
+                    container_data += '<tr>';
+                    container_data += '<td>' + value.container_id + '</td>' ;
+                    container_data += '<td>' + value.name + '</td>' ;
+                    container_data += '<td>' + value.type + '</td>' ;
+                    container_data += '<td>' + value.lng + '</td>' ;
+                    container_data += '<td>' + value.lat + '</td>' ;
+                    container_data += '<td>' + value.address + '</td>' ;
+                    container_data += '<td>' + value.weight + '</td>' ;
+                    container_data += '</tr>';
+                });
+                $('#containers-table').append(container_data);
+            });
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
