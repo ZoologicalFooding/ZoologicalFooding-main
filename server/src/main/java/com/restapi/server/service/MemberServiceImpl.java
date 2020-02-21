@@ -42,4 +42,9 @@ public class MemberServiceImpl implements MemberService{
         oldMember.setPass(mem.getPass());
         memberDao.save(oldMember);
     }
+
+    @Override
+    public void deleteAllMembers() {
+        memberDao.deleteAll();
+    }
 }

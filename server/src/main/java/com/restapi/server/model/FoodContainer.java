@@ -32,5 +32,7 @@ public class FoodContainer {
     private String address;
     @Column
     private double weight;
+    //@Column
+    //private String date;
 }
 

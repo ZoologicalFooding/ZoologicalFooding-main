@@ -8,4 +8,5 @@ public interface MemberService {
     Member getMemberById(int id);
     void deleteMemberById(int id);
     void updateMemberById(Member mem,int id);
+    void deleteAllMembers();
 }

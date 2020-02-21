@@ -45,4 +45,9 @@ public class MemberController {
         memberService.updateMemberById(mem,id);
         return ResponseEntity.ok(mem);
     }
+    @RequestMapping(value = "/deleteAllMembers", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteAllMembers(){
+        memberService.deleteAllMembers();
+        return ResponseEntity.ok("Delete All Members!");
+    }
 }
