@@ -34,6 +34,7 @@ public class FoodContainerServiceImpl implements FoodContainerService {
         foodDao.deleteById(id);
     }
 
+
     @Override
     public void updateContainerById(FoodContainer container, int id) {
         FoodContainer oldContainer = foodDao.findById(id).get();
@@ -45,5 +46,10 @@ public class FoodContainerServiceImpl implements FoodContainerService {
         oldContainer.setType(container.getType());
         oldContainer.setWeight(container.getWeight());
         foodDao.save(oldContainer);
+    }
+
+    @Override
+    public void deleteAllContainers() {
+        foodDao.deleteAll();
     }
 }

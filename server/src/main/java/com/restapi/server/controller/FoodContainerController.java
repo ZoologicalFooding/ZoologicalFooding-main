@@ -22,7 +22,7 @@ public class FoodContainerController {
         return ResponseEntity.ok(contList);
     }
 
-    @RequestMapping(value = "/containers/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/container/{id}",method = RequestMethod.GET)
     public ResponseEntity<FoodContainer> getContainer(@PathVariable int id) {
         FoodContainer cont = foodContainerService.getContainerById(id);
         return ResponseEntity.ok(cont);
@@ -37,6 +37,11 @@ public class FoodContainerController {
         FoodContainer foodContainer = foodContainerService.getContainerById(id);
         foodContainerService.deleteContainerById(id);
         return ResponseEntity.ok(foodContainer);
+    }
+    @RequestMapping(value = "/deleteAllContainers", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteAllContainers(){
+        foodContainerService.deleteAllContainers();
+        return ResponseEntity.ok("Delete All Member!");
     }
 
     @RequestMapping(value = "/editContainer/{id}", method = RequestMethod.PUT)

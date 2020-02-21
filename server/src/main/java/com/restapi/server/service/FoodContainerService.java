@@ -8,4 +8,5 @@ public interface FoodContainerService {
     FoodContainer getContainerById(int id);
     void deleteContainerById(int id);
     void updateContainerById(FoodContainer container,int id);
+    void deleteAllContainers();
 }
