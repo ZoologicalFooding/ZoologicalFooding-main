@@ -1,5 +1,24 @@
 # ZoologicalFooding-main
 
+[Tech - Restful API]
+    
+    Spring Boot 
+    Hibernate
+    Heroku - Heroku Postgresql
+
+    Restful API URL's : 
+    https://restservices496.herokuapp.com/members
+    https://restservices496.herokuapp.com/member/id
+    https://restservices496.herokuapp.com/addMember
+    https://restservices496.herokuapp.com/deleteMember/id
+    https://restservices496.herokuapp.com/editMember/id
+    https://restservices496.herokuapp.com/containers
+    https://restservices496.herokuapp.com/containers/id
+    https://restservices496.herokuapp.com/addContainer
+    https://restservices496.herokuapp.com/editContainer/id
+    https://restservices496.herokuapp.com/deleteContainer/id
+
+
 Team Backlog: 
 
 GROUP ZOOLOGICALFOODING
