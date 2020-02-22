@@ -30,6 +30,7 @@ public class Member {
     private String email;
     @Column
     private String pass;
+
     //@Column
     //private String date;
 
