@@ -25,6 +25,8 @@ public class CreditCard {
     @Column
     private int expiration_date;
 
+    @Column(name="member_id")
+    private int memberId;
 
 
 }

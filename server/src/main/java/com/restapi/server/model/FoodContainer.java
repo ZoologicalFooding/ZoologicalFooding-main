@@ -19,7 +19,8 @@ public class FoodContainer {
             sequenceName = "foodcontainer_sequence",
             initialValue = 10
     )
-    private int container_id;
+    @Column(name="container_id")
+    private int containerID;
     @Column
     private String name;
     @Column
@@ -32,6 +33,8 @@ public class FoodContainer {
     private String address;
     @Column
     private double weight;
+
+
     //@Column
     //private String date;
 }

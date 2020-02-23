@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table (name = "member")
@@ -19,7 +21,8 @@ public class Member {
             sequenceName = "member_sequence",
             initialValue = 10
     )
-    private int member_id;
+    @Column(name = "member_id")
+    private int memberID;
     @Column
     private String first_name;
     @Column
@@ -30,6 +33,11 @@ public class Member {
     private String email;
     @Column
     private String pass;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_id", referencedColumnName= "member_id")
+    private List<CreditCard> creditCardList = new ArrayList<>();
+
 
     //@Column
     //private String date;
