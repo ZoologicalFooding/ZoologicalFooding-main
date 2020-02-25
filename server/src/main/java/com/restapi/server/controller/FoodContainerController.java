@@ -54,7 +54,7 @@ public class FoodContainerController {
         foodContainerService.updateContainerById(cont,id);
         return ResponseEntity.ok(cont);
     }
-
+    // this method will be deleted later.
     @RequestMapping(value = "/denemeOdeme", method = RequestMethod.POST)
     public ResponseEntity<String> odeme(@RequestBody FoodContainer food){
         CreditCard cr1 = new CreditCard();
@@ -65,19 +65,16 @@ public class FoodContainerController {
         cr1.setExpiration_date(232323);
         cr1.setFullName("denemeilk");
 
-        cr2.setCvvNumber(2222222);
-        cr2.setFullName("denemeIKi");
-        cr2.setExpiration_date(2324242);
-        cr2.setCardNumber(13445677);
 
         Fills fill = new Fills();
         fill.setCommet("20");
         fill.setFoodType("cat");
-
+        fill.setCreditCardNumber(cr1.getCardNumber());
         List<Fills> tempList = new ArrayList<>();
         tempList.add(fill);
         cr1.setFillsList(tempList);
         food.setFillsList(tempList);
+        foodContainerService.addContainer(food);
 
         return ResponseEntity.ok("Delete All Members!");
     }
