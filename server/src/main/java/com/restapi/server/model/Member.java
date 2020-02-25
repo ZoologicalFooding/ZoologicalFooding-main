@@ -39,6 +39,7 @@ public class Member {
     private List<CreditCard> creditCardList = new ArrayList<>();
 
 
+
     //@Column
     //private String date;
 

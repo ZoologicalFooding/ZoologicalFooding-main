@@ -1,10 +1,15 @@
 package com.restapi.server.controller;
 
+import com.restapi.server.model.CreditCard;
+import com.restapi.server.model.Fills;
 import com.restapi.server.model.FoodContainer;
 import com.restapi.server.service.FoodContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -48,6 +53,33 @@ public class FoodContainerController {
     public ResponseEntity<FoodContainer> updateContainers(@RequestBody(required = false) FoodContainer cont, @PathVariable int id) {
         foodContainerService.updateContainerById(cont,id);
         return ResponseEntity.ok(cont);
+    }
+
+    @RequestMapping(value = "/denemeOdeme", method = RequestMethod.POST)
+    public ResponseEntity<String> odeme(@RequestBody FoodContainer food){
+        CreditCard cr1 = new CreditCard();
+        CreditCard cr2 = new CreditCard();
+
+        cr1.setCardNumber(1212131);
+        cr1.setCvvNumber(2323232);
+        cr1.setExpiration_date(232323);
+        cr1.setFullName("denemeilk");
+
+        cr2.setCvvNumber(2222222);
+        cr2.setFullName("denemeIKi");
+        cr2.setExpiration_date(2324242);
+        cr2.setCardNumber(13445677);
+
+        Fills fill = new Fills();
+        fill.setCommet("20");
+        fill.setFoodType("cat");
+
+        List<Fills> tempList = new ArrayList<>();
+        tempList.add(fill);
+        cr1.setFillsList(tempList);
+        food.setFillsList(tempList);
+
+        return ResponseEntity.ok("Delete All Members!");
     }
 
 

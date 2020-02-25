@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "credit_card")
@@ -17,6 +16,7 @@ import javax.persistence.Table;
 public class CreditCard {
 
     @Id
+    @Column(name="card_number")
     private int cardNumber;
     @Column
     private String fullName;
@@ -29,4 +29,7 @@ public class CreditCard {
     private int memberId;
 
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "card_number", referencedColumnName= "card_number")
+    private List<Fills> fillsList = new ArrayList<>();
 }

@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="food_container")
@@ -34,7 +36,9 @@ public class FoodContainer {
     @Column
     private double weight;
 
-
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "container_id", referencedColumnName= "container_id")
+    private List<Fills> fillsList = new ArrayList<>();
     //@Column
     //private String date;
 }

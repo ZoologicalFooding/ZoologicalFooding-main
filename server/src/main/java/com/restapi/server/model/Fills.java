@@ -25,6 +25,14 @@ public class Fills {
     @Column
     private String commet;
 
+    @Column(name="member_id")
+    private int memberId;
+
+    @Column(name = "container_id")
+    private int containerId;
+
+    @Column(name="card_number")
+    private int creditCardNumber;
 
 
 
