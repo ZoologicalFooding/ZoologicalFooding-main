@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	<title> Registration Page</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -107,7 +108,7 @@
                 type: "POST",
                 url: "http://restservices496.herokuapp.com/addMember",
                 data: formData,
-                success: function () { window.alert("sometext"); },
+                success: function () { window.alert("Registration Successful!"); },
                 dataType: "json",
                 contentType: "application/json"
             });
