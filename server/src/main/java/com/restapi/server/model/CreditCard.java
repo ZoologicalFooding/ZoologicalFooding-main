@@ -29,7 +29,7 @@ public class CreditCard {
     private int memberId;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "card_number", referencedColumnName= "card_number")
     private List<Fills> fillsList = new ArrayList<>();
 }

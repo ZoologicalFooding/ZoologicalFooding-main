@@ -30,7 +30,8 @@ public class CreditCardController {
 
     @RequestMapping(value = "/addCreditCard/{id}",method = RequestMethod.POST)
     public ResponseEntity<CreditCard> addCreditCard(@RequestBody CreditCard creditCard, @PathVariable int id) {
-        creditCardService.addCreditCard(creditCard,id);
+        creditCard.setMemberId(id);
+        creditCardService.addCreditCard(creditCard);
         return ResponseEntity.ok(creditCard);
     }
     @RequestMapping(value = "/deleteCreditCard/{number}", method = RequestMethod.DELETE)
@@ -38,9 +39,14 @@ public class CreditCardController {
        creditCardService.deleteCreditCardByNumber(number);
         return ResponseEntity.ok("Deleted!");
     }
-
-
-
-
-
+    @RequestMapping(value = "/editCreditCard/{number}", method = RequestMethod.PUT)
+    public ResponseEntity<CreditCard> updateCreditCard(@RequestBody(required = false) CreditCard creditCard, @PathVariable int number) {
+        creditCardService.updateCreditCardByNumber(creditCard,number);
+        return ResponseEntity.ok(creditCard);
+    }
+    @RequestMapping(value = "/deleteAllCreditCars", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteAllCards(){
+        creditCardService.deleteAllCreditCards();
+        return ResponseEntity.ok("Deleted All Cards!");
+    }
 }

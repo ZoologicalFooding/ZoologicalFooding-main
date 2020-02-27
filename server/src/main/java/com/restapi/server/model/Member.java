@@ -34,7 +34,7 @@ public class Member {
     @Column
     private String pass;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", referencedColumnName= "member_id")
     private List<CreditCard> creditCardList = new ArrayList<>();
 

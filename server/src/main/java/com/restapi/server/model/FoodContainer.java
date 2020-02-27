@@ -36,7 +36,7 @@ public class FoodContainer {
     @Column
     private double weight;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "container_id", referencedColumnName= "container_id")
     private List<Fills> fillsList = new ArrayList<>();
     //@Column

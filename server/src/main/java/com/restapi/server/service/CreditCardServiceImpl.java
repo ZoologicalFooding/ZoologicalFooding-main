@@ -2,49 +2,28 @@ package com.restapi.server.service;
 
 import com.restapi.server.dao.CreditCardDao;
 import com.restapi.server.model.CreditCard;
-import com.restapi.server.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CreditCardServiceImpl implements CreditCardService {
     private final CreditCardDao creditCardDao;
-    private final MemberService memberService;
+
 
     @Autowired
-    public CreditCardServiceImpl(CreditCardDao creditCardDao, MemberService memberService){
-        this.creditCardDao = creditCardDao;
-        this.memberService = memberService;
-    }
-
+    public CreditCardServiceImpl(CreditCardDao creditCardDao){ this.creditCardDao = creditCardDao; }
 
     @Override
-    public void addCreditCard(CreditCard creditCard, int id) {
-        creditCard.setMemberId(id);
-        Member member = memberService.getMemberById(id);
-        List<CreditCard> cardList = member.getCreditCardList();
-        member.setCreditCardList(cardList);
-        cardList.add(creditCard);
-        creditCardDao.save(creditCard);
-
-    }
+    public void addCreditCard(CreditCard creditCard) { creditCardDao.save(creditCard); }
 
     @Override
-    public Iterable<CreditCard> getCreditCards() {
-        return creditCardDao.findAll();
-    }
+    public Iterable<CreditCard> getCreditCards() { return creditCardDao.findAll(); }
 
     @Override
-    public CreditCard getCreditCardByNumber(int number) {
-        return creditCardDao.findById(number).get();
-    }
+    public CreditCard getCreditCardByNumber(int number) { return creditCardDao.findById(number).get(); }
 
     @Override
-    public void deleteCreditCardByNumber(int number) {
-        creditCardDao.deleteById(number);
-    }
+    public void deleteCreditCardByNumber(int number) { creditCardDao.deleteById(number); }
 
     @Override
     public void updateCreditCardByNumber(CreditCard card, int number) {
@@ -56,9 +35,6 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
-    public void deleteAllCreditCards() {
-        creditCardDao.deleteAll();
-    }
-
+    public void deleteAllCreditCards() { creditCardDao.deleteAll(); }
 
 }
