@@ -1,6 +1,6 @@
 # ZoologicalFooding-main
 
-[Tech - Restful API]
+Restful Api
     
     Spring Boot 
     Hibernate
@@ -12,11 +12,19 @@
     https://restservices496.herokuapp.com/addMember
     https://restservices496.herokuapp.com/deleteMember/id
     https://restservices496.herokuapp.com/editMember/id
+
     https://restservices496.herokuapp.com/containers
     https://restservices496.herokuapp.com/container/id
     https://restservices496.herokuapp.com/addContainer
     https://restservices496.herokuapp.com/editContainer/id
     https://restservices496.herokuapp.com/deleteContainer/id
+
+    https://restservices496.herokuapp.com/creditCards
+    https://restservices496.herokuapp.com/addCreditCard/id
+    https://restservices496.herokuapp.com/deleteCreditCard/id
+    https://restservices496.herokuapp.com/editCreditCard/id
+
+
 
 
 Team Backlog: 
