@@ -20,9 +20,17 @@ Restful Api
     https://restservices496.herokuapp.com/deleteContainer/id
 
     https://restservices496.herokuapp.com/creditCards
-    https://restservices496.herokuapp.com/addCreditCard/id
-    https://restservices496.herokuapp.com/deleteCreditCard/id
-    https://restservices496.herokuapp.com/editCreditCard/id
+    https://restservices496.herokuapp.com/creditCard/number
+    https://restservices496.herokuapp.com/addCreditCard
+    https://restservices496.herokuapp.com/deleteCreditCard/number
+    https://restservices496.herokuapp.com/editCreditCard/number
+
+    https://restservices496.herokuapp.com/fills
+    https://restservices496.herokuapp.com/fill/id
+    https://restservices496.herokuapp.com/addFill
+    https://restservices496.herokuapp.com/deleteFill/id
+    https://restservices496.herokuapp.com/editFill/id
+
 
 
 
