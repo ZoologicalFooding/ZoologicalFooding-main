@@ -39,8 +39,8 @@ public class FoodContainerServiceImpl implements FoodContainerService {
     public void updateContainerById(FoodContainer container, int id) {
         FoodContainer oldContainer = foodDao.findById(id).get();
         oldContainer.setAddress(container.getAddress());
-        oldContainer.setLat(container.getLat());
-        oldContainer.setLng(container.getLng());
+        oldContainer.setLatitude(container.getLatitude());
+        oldContainer.setLongitude(container.getLongitude());
         oldContainer.setName(container.getName());
         oldContainer.setType(container.getType());
         oldContainer.setWeight(container.getWeight());
