@@ -28,9 +28,9 @@ public class FoodContainer {
     @Column
     private String type;
     @Column
-    private double lng;
+    private String lng;
     @Column
-    private double lat;
+    private String lat;
     @Column
     private String address;
     @Column
