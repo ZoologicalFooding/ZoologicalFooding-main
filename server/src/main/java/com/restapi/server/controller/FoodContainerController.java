@@ -1,15 +1,10 @@
 package com.restapi.server.controller;
 
-import com.restapi.server.model.CreditCard;
-import com.restapi.server.model.Fills;
 import com.restapi.server.model.FoodContainer;
 import com.restapi.server.service.FoodContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -55,7 +50,7 @@ public class FoodContainerController {
         return ResponseEntity.ok(cont);
     }
     // this method will be deleted later.
-    @RequestMapping(value = "/denemeOdeme", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/denemeOdeme", method = RequestMethod.POST)
     public ResponseEntity<String> odeme(@RequestBody FoodContainer food){
         CreditCard cr1 = new CreditCard();
         CreditCard cr2 = new CreditCard();
@@ -77,7 +72,7 @@ public class FoodContainerController {
         foodContainerService.addContainer(food);
 
         return ResponseEntity.ok("Delete All Members!");
-    }
+    }*/
 
 
 }

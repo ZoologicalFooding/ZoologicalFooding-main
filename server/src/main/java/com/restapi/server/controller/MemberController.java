@@ -1,14 +1,10 @@
 package com.restapi.server.controller;
 
-import com.restapi.server.model.CreditCard;
 import com.restapi.server.model.Member;
 import com.restapi.server.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -56,7 +52,7 @@ public class MemberController {
     }
 
     // this method is set to be deleted later, please ignore this method!!!!!!!!!!!!!!!!!
-    @RequestMapping(value = "/denemeKrediKarti", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/denemeKrediKarti", method = RequestMethod.POST)
     public ResponseEntity<String> krediKarti(@RequestBody Member member){
         CreditCard cr1 = new CreditCard();
         CreditCard cr2 = new CreditCard();
@@ -77,5 +73,5 @@ public class MemberController {
         memberService.addMember(member);
 
         return ResponseEntity.ok("Delete All Members!");
-    }
+    }*/
 }
