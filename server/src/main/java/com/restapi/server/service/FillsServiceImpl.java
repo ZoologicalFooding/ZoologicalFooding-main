@@ -3,7 +3,9 @@ package com.restapi.server.service;
 import com.restapi.server.dao.FillsDao;
 import com.restapi.server.model.Fills;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FillsServiceImpl implements FillsService {
     private final FillsDao fillsDao;
 
