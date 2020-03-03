@@ -38,14 +38,10 @@
     <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
             <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
-                    class="fa fa-bars"></i></a>
-            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers</a>
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>        
+            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
             <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
-            <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">History</a>
-            <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
-            <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i
-                    class="fa fa-search"></i></a>
         </div>
     </div>
 
@@ -89,7 +85,7 @@
                 var member_data = '';
                 $.each(data, function (key, value) {
                     member_data += '<tr>';
-                    member_data += '<td>' + value.member_id + '</td>';
+                    member_data += '<td>' + value.memberID + '</td>';
                     member_data += '<td>' + value.first_name + '</td>';
                     member_data += '<td>' + value.last_name + '</td>';
                     member_data += '<td>' + value.address + '</td>';

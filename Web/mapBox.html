@@ -3,11 +3,23 @@
 
 <head>
 
+    <title>Containers Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
         .marker {
@@ -23,7 +35,20 @@
 
 <body>
 
-    <div>Map of Containers</div>
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+                    <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>        
+            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
+            <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
+        </div>
+    </div>
+
+    <h1>--</h1>
+    <div><h3>Map of Containers</h3></div>
 
     <div id='map' style='width: 1500px; height: 500px;'></div>
     <script>
@@ -33,7 +58,7 @@
         } else {
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
+                style: 'mapbox://styles/mapbox/outdoors-v11',
                 center: [32.841853, 39.924145],
                 zoom: 12
             });
@@ -41,7 +66,7 @@
 
         $(document).ready(function () {
 
-            // show list of containers on first load
+            // show containers on map
             getContainers();
 
         });
@@ -53,9 +78,7 @@
                     var el = document.createElement('div');
                     el.className = 'marker';
                     var coordinates = [value.lng,value.lat];
-                    if(value.lng == 123){
 
-                    }
                     new mapboxgl.Marker(el)
                         .setLngLat(coordinates)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
