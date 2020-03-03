@@ -40,12 +40,9 @@
             <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
                 href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
                     class="fa fa-bars"></i></a>
-            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers</a>
+            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
+            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>
             <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
-            <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">History</a>
-            <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Contact</a>
-            <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i
-                    class="fa fa-search"></i></a>
         </div>
     </div>
 
@@ -90,7 +87,7 @@
                 var container_data = '';
                 $.each(data, function(key,value){
                     container_data += '<tr>';
-                    container_data += '<td>' + value.container_id + '</td>' ;
+                    container_data += '<td>' + value.containerID + '</td>' ;
                     container_data += '<td>' + value.name + '</td>' ;
                     container_data += '<td>' + value.type + '</td>' ;
                     container_data += '<td>' + value.lng + '</td>' ;
