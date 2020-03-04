@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table (name = "member")
@@ -30,14 +31,20 @@ public class Member {
     @Column
     private String address;
     @Column
-    private String email;
+    private String email;//update güncelle
+    @Column
+    private String username;
     @Column
     private String pass;
+
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", referencedColumnName= "member_id")
     private List<CreditCard> creditCardList = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name="user_role", joinColumns = @JoinColumn(name = "member_id"))
+    private Set<UserRole> role;
 
 
     //@Column
