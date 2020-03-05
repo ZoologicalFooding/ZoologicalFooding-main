@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-public class UserRole {
+public class Role {
     @Id
     @GeneratedValue(generator = "user_generator")
     @SequenceGenerator(
@@ -21,7 +21,6 @@ public class UserRole {
     )
     @Column(name = "role_id")
     private int roleId;
-
     @Column(name = "role")
     private String role;
 

@@ -1,9 +1,9 @@
 package com.restapi.server.dao;
 
 import com.restapi.server.model.Member;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface MemberDao extends CrudRepository<Member, Integer> {
-       //Member findByName(String username);
+public interface MemberDao extends JpaRepository<Member, Integer> {
+       Member findByUsername(String username);
 }

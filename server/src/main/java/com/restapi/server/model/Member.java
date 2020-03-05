@@ -44,7 +44,7 @@ public class Member {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="user_role", joinColumns = @JoinColumn(name = "member_id"))
-    private Set<UserRole> role;
+    private Set<Role> role;
 
 
     //@Column
