@@ -35,6 +35,14 @@ public class FoodContainer {
     private String address;
     @Column
     private double weight;
+    @Column
+    private String IP;
+    @Column
+    private String Region;
+    @Column
+    private String Country;
+    @Column
+    private String City;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "container_id", referencedColumnName= "container_id")
