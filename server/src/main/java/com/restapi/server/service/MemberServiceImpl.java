@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService{
         oldMember.setAddress(mem.getAddress());
         oldMember.setEmail(mem.getEmail());
         oldMember.setPass(mem.getPass());
+        oldMember.setUsername(mem.getUsername());
         memberDao.save(oldMember);
     }
 
