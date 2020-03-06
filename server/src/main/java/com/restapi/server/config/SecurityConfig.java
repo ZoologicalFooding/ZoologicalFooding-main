@@ -1,7 +1,5 @@
 package com.restapi.server.config;
 
-import com.restapi.server.service.CustomUserDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,25 +21,36 @@ import java.util.Arrays;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-    @Autowired
-    private CustomUserDetailService userDetailsService;
+    //@Autowired
+    //private CustomUserDetailService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
+        auth.
+                inMemoryAuthentication()
+                .withUser("admin").password(encodePWD().encode("admin123")).roles("ADMIN");
+
+
+        //auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-            .httpBasic().and()
+            //.httpBasic().and()
 
                 .authorizeRequests()
-                .antMatchers("/admin/add").hasRole("ADMIN");
+                .antMatchers("/admin/add").hasRole("ADMIN")
+                //.antMatchers("/members").hasRole("ADMIN")
+                .antMatchers("/containers").permitAll()
+                .antMatchers("/members").permitAll()
+                .and()
+                .httpBasic();
                 //.anyRequest().permitAll()
         http.csrf().disable();
-
+       http.logout()
+       .deleteCookies("auth_code","JSESSIONID").invalidateHttpSession(true);
 
     }
 
