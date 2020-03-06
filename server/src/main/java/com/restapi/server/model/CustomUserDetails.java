@@ -2,6 +2,7 @@ package com.restapi.server.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,23 +13,23 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 public class CustomUserDetails implements UserDetails {
-
+    @Autowired
     private Member member;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return member.getRole().stream().map(role -> new SimpleGrantedAuthority("ROLE_ADMIN")).collect(Collectors.toList());
+        return this.member.getRole().stream().map(role -> new SimpleGrantedAuthority("ROLE_"+role)).collect(Collectors.toList());
 
     }
 
     @Override
     public String getPassword() {
-        return member.getPass();
+        return this.member.getPass();
     }
 
     @Override
     public String getUsername() {
-        return member.getUsername();
+        return this.member.getUsername();
     }
 
     @Override

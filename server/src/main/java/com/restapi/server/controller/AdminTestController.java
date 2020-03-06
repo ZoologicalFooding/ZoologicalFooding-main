@@ -20,7 +20,7 @@ public class AdminTestController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @PreAuthorize("hashAnyRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/admin/add")
     public String addUserByAdmin(@RequestBody Member member){
         String pwd = member.getPass();
