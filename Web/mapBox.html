@@ -77,7 +77,7 @@
 
                     var el = document.createElement('div');
                     el.className = 'marker';
-                    var coordinates = [value.lng,value.lat];
+                    var coordinates = [Number(value.longitude),Number(value.latitude)];
 
                     new mapboxgl.Marker(el)
                         .setLngLat(coordinates)
