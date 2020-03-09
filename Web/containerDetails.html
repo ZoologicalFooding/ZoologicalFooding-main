@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Container Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif
+        }
+
+        .mySlides {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>        
+            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
+            <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
+        </div>
+    </div>
+
+    <h1> -- </h1>
+
+    <h2>Container Details</h2>
+
+    <form class="form-horizontal" enctype='application/json' name="container-edit-form">
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="name" name="name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="type">Type:</label>
+            <d11111iv class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="type" name="type">
+            </d11111iv>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="longitude">Longitude:</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="longitude" name="longitude">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="latitude">Latitude:</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="latitude" name="latitude">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="address">Address:</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="address" name="address">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="weight">Weight:</label>
+            <div class="col-sm-10">
+                <input type="text" style="width: 30%;" class="form-control" id="weight" name="weight">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" onclick="myFunction()">Edit</button>
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+
+
+    <script>
+
+        var id = localStorage.getItem("conID");
+
+        var url = "http://restservices496.herokuapp.com/container/" + id;
+
+        $.getJSON(url, function (data) {
+        
+            $('input[name="name"]').val(data.name);
+            $('input[name="type"]').val(data.type);
+            $('input[name="longitude"]').val(data.longitude);
+            $('input[name="latitude"]').val(data.latitude);
+            $('input[name="address"]').val(data.address);
+            $('input[name="weight"]').val(data.weight);
+        
+        
+        });
+        
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <link rel="stylesheet" href="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css">
+    
+</head>
+
+<body>
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Address</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Address</th>
+                <th>Weight</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+</body>
+
+<script>
+
+var editor; // use a global for the submit and return data rendering in the examples
+ 
+$(document).ready(function() {
+    editor = new $.fn.dataTable.Editor( {
+        ajax: {
+            create: {
+                type: 'POST',
+                url:  'https://restservices496.herokuapp.com/addContainer'
+            },
+            edit: {
+                type: 'PUT',
+                url:  'https://restservices496.herokuapp.com/editContainer/'
+            },
+            remove: {
+                type: 'DELETE',
+                url:  'https://restservices496.herokuapp.com/deleteContainer/'
+            }
+        },
+        table: "#example",
+        fields: [ {
+                label: "Name:",
+                name: "name"
+            }, {
+                label: "Type:",
+                name: "type"
+            }, {
+                label: "Longitude:",
+                name: "longitude"
+            }, {
+                label: "Latitude:",
+                name: "latitude"
+            }, {
+                label: "Address:",
+                name: "address"
+            }, {
+                label: "Weight:",
+                name: "weight"
+            }
+        ]
+    } );
+ 
+    $('#example').DataTable( {
+        dom: "Bfrtip",
+        ajax: "https://restservices496.herokuapp.com/containers",
+        columns: [
+            { data: "name" },
+            { data: "type" },
+            { data: "longitude", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
+            { data: "latitude", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) },
+            { data: "address" },
+            { data: "weight", render: $.fn.dataTable.render.number( ',', '.', 0, '$' ) }
+        ],
+        select: true,
+        buttons: [
+            { extend: "create", editor: editor },
+            { extend: "edit",   editor: editor },
+            { extend: "remove", editor: editor }
+        ]
+    } );
+} );
+
+
+
+</script>
+
+
+
+
+</html>

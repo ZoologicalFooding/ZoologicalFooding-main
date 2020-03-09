@@ -53,7 +53,7 @@
 		<h2> Containers </h2>
 	
         <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="containers-table">
+            <table class="table table-bordered table-striped" id="containers-table" >
 
                 <tr>
                     <th>Container id</th>
@@ -63,6 +63,7 @@
                     <th>Latitude</th>
                     <th>Address</th>
                     <th>Weight</th>
+                    <th>Options</th>
                 </tr>
             </table>
         </div>
@@ -94,12 +95,23 @@
                     container_data += '<td>' + value.latitude + '</td>' ;
                     container_data += '<td>' + value.address + '</td>' ;
                     container_data += '<td>' + value.weight + '</td>' ;
+                    container_data += '<td>' + '<button type="button" class="btn">Details</button>' + '</td>';
                     container_data += '</tr>';
                 });
                 $('#containers-table').append(container_data);
             });
 
         }
+
+
+        // get id when edit button clicked
+        $('#containers-table').on('click', '.btn',function(){
+            var currow = $(this).closest('tr');
+            var col0  = currow.find('td:eq(0)').text();
+            localStorage.setItem("conID",col0);
+            window.location.replace("containerDetails.html");
+        })
+
 
 
     </script>
