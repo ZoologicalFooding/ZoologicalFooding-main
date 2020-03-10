@@ -22,8 +22,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <style>
-        .marker {
-            background-image: url('mapbox-icon.png');
+        .marker{
+            background-image: url('icons/cat-solid.svg');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .markerCat {
+            background-image: url('icons/cat.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .markerDog {
+            background-image: url('icons/dog.png');
             background-size: cover;
             width: 50px;
             height: 50px;
@@ -78,12 +94,25 @@
                     var el = document.createElement('div');
                     el.className = 'marker';
                     var coordinates = [Number(value.longitude),Number(value.latitude)];
-
-                    new mapboxgl.Marker(el)
+                    
+                    if(value.type == "dog"){
+                        new mapboxgl.Marker(el)
                         .setLngLat(coordinates)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                             .setHTML('<h3>Name: ' + value.name + '</h3><p>Type: '+ value.type +'<p>Weight: ' + value.weight + '</p>'))
                         .addTo(map);
+                    }
+
+                    if(value.type == "cat"){
+
+                        new mapboxgl.Marker(el)
+                        .setLngLat(coordinates)
+                        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML('<h3>Name: ' + value.name + '</h3><p>Type: '+ value.type +'<p>Weight: ' + value.weight + '</p>'))
+                        .addTo(map);
+
+                    }
+                    
                 });
             });
         }
