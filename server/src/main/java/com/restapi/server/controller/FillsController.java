@@ -1,6 +1,8 @@
 package com.restapi.server.controller;
 
+import com.restapi.server.model.CreditCard;
 import com.restapi.server.model.Fills;
+import com.restapi.server.model.FoodContainer;
 import com.restapi.server.service.CreditCardService;
 import com.restapi.server.service.FillsService;
 import com.restapi.server.service.FoodContainerService;
@@ -8,19 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 public class FillsController {
 
     private final FillsService fillsService;
     private final FoodContainerService foodService;
-    private final CreditCardService credit;
+    private final CreditCardService creditService;
 
     @Autowired
-    public FillsController(FillsService fillsService, FoodContainerService foodContainerService, CreditCardService credit){
+    public FillsController(FillsService fillsService, FoodContainerService foodContainerService, CreditCardService creditService){
         this.fillsService=fillsService;
         this.foodService=foodContainerService;
-        this.credit = credit;
+        this.creditService = creditService;
     }
 
     @RequestMapping(value = "/fills",method = RequestMethod.GET)
@@ -37,7 +41,13 @@ public class FillsController {
     @RequestMapping(value = "/deleteFill/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Fills> deleteFill(@PathVariable int id){
         Fills fill = fillsService.getFillsById(id);
-        fillsService.getFillsById(id);
+        FoodContainer food = foodService.getContainerById(fill.getContainerId());
+        List<Fills> newListFood = food.getFillsList();
+        newListFood.remove(fill);
+        CreditCard creditCard = creditService.getCreditCardByNumber(fill.getCreditCardNumber());
+        List<Fills> newListCredit = creditCard.getFillsList();
+        newListCredit.remove(fill);
+        fillsService.deleteFillsById(id);
         return ResponseEntity.ok(fill);
     }
 
