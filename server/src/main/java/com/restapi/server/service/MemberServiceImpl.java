@@ -48,4 +48,6 @@ public class MemberServiceImpl implements MemberService{
     public void deleteAllMembers() {
         memberDao.deleteAll();
     }
+
+
 }

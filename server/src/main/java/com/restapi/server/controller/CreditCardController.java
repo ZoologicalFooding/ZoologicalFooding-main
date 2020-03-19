@@ -1,19 +1,25 @@
 package com.restapi.server.controller;
 
 import com.restapi.server.model.CreditCard;
+import com.restapi.server.model.Member;
 import com.restapi.server.service.CreditCardService;
+import com.restapi.server.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class CreditCardController {
     private final CreditCardService creditCardService;
+    private final MemberService  memberService;
 
     @Autowired
-    public CreditCardController(CreditCardService creditCardService) {
+    public CreditCardController(CreditCardService creditCardService, MemberService memberService) {
         this.creditCardService = creditCardService;
+        this.memberService = memberService;
     }
 
     @RequestMapping(value = "/creditCards",method = RequestMethod.GET)
@@ -36,7 +42,14 @@ public class CreditCardController {
     }
     @RequestMapping(value = "/deleteCreditCard/{number}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteCreditCard(@PathVariable int number) {
-       creditCardService.deleteCreditCardByNumber(number);
+        CreditCard credit = creditCardService.getCreditCardByNumber(number);
+        int memberId = credit.getMemberId();
+        Member member = memberService.getMemberById(memberId);
+        List<CreditCard> list = member.getCreditCardList();
+        list.remove(credit);
+        member.setCreditCardList(list);
+        creditCardService.deleteCreditCardByNumber(number);
+
         return ResponseEntity.ok("Deleted!");
     }
     @RequestMapping(value = "/editCreditCard/{number}", method = RequestMethod.PUT)

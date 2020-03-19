@@ -45,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.antMatchers("/members").hasRole("ADMIN")
                 .antMatchers("/containers").permitAll()
                 .antMatchers("/members").permitAll()
+                .antMatchers("/creditCards").permitAll()
                 .and()
                 .httpBasic();
                 //.anyRequest().permitAll()
