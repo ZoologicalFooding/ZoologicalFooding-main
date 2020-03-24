@@ -28,10 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.
                 inMemoryAuthentication()
-                .withUser("admin").password(encodePWD().encode("admin123")).roles("ADMIN");
+                .withUser("systemAdmin").password(encodePWD().encode("admin123")).roles("ADMIN")
+        .and().withUser("normalUser").password(encodePWD().encode("user123")).roles("USER");
 
 
-        //auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
+       // auth.userDetailsService(userDetailsService).passwordEncoder(encodePWD());
     }
 
     @Override

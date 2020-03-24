@@ -34,6 +34,4 @@ public class Fills {
     @Column(name="card_number")
     private int creditCardNumber;
 
-
-
 }

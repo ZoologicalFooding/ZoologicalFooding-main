@@ -49,5 +49,10 @@ public class MemberServiceImpl implements MemberService{
         memberDao.deleteAll();
     }
 
+    @Override
+    public Member findByUserName(String name) {
+        return memberDao.findByUsername(name);
+    }
+
 
 }

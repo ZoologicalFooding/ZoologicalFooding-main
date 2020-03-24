@@ -4,6 +4,7 @@ package com.restapi.server.controller;
 import com.restapi.server.dao.MemberDao;
 import com.restapi.server.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,12 +22,12 @@ public class AdminTestController {
 
     //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/admin/add")
-    public String addUserByAdmin(@RequestBody Member member){
+    public String addUserByAdmin(@RequestBody Member member, Authentication authentication){
         String pwd = member.getPass();
         String encPwd = passwordEncoder.encode(pwd);
         member.setPass(encPwd);
         memberDao.save(member);
-        return "true";
+        return authentication.getName();
     }
 
 

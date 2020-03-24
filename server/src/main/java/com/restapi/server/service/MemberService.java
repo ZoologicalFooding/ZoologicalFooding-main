@@ -9,5 +9,5 @@ public interface MemberService {
     void deleteMemberById(int id);
     void updateMemberById(Member mem,int id);
     void deleteAllMembers();
-
+    Member findByUserName(String name);
 }

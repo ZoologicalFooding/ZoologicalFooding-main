@@ -37,7 +37,6 @@ public class Member {
     @Column
     private String pass;
 
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", referencedColumnName= "member_id")
     private List<CreditCard> creditCardList = new ArrayList<>();
@@ -46,8 +45,5 @@ public class Member {
     @JoinTable(name="user_role", joinColumns = @JoinColumn(name = "member_id"))
     private Set<Role> role;
 
-
-    //@Column
-    //private String date;
 
 }
