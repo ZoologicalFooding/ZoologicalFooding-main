@@ -46,6 +46,14 @@ public class DonateController {
         donatesService.updateDonatesById(donate,id);
         return ResponseEntity.ok(donate);
     }
-
+    @RequestMapping(value = "/likeDonate/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<DonateTable> editDonate(@PathVariable int id) {
+        DonateTable donate = donatesService.getDonatesById(id);
+        int like = donate.getLiked();
+        like++;
+        donate.setLiked(like);
+        donatesService.updateDonatesById(donate,id);
+        return ResponseEntity.ok(donate);
+    }
 
 }
