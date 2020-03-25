@@ -1,8 +1,6 @@
 package com.restapi.server.controller;
 
-import com.restapi.server.model.CreditCard;
 import com.restapi.server.model.Fills;
-import com.restapi.server.model.FoodContainer;
 import com.restapi.server.model.Member;
 import com.restapi.server.service.CreditCardService;
 import com.restapi.server.service.FillsService;
@@ -12,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -46,12 +42,7 @@ public class FillsController {
     @RequestMapping(value = "/deleteFill/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Fills> deleteFill(@PathVariable int id) {
         Fills fill = fillsService.getFillsById(id);
-        FoodContainer food = foodService.getContainerById(fill.getContainerId());
-        List<Fills> newListFood = food.getFillsList();
-        newListFood.remove(fill);
-        CreditCard creditCard = creditService.getCreditCardByNumber(fill.getCreditCardNumber());
-        List<Fills> newListCredit = creditCard.getFillsList();
-        newListCredit.remove(fill);
+
         fillsService.deleteFillsById(id);
         return ResponseEntity.ok(fill);
     }

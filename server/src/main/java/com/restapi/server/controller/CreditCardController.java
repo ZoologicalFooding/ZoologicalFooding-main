@@ -1,15 +1,10 @@
 package com.restapi.server.controller;
 
-import com.restapi.server.model.CreditCard;
-import com.restapi.server.model.Member;
 import com.restapi.server.service.CreditCardService;
 import com.restapi.server.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -23,7 +18,7 @@ public class CreditCardController {
         this.memberService = memberService;
     }
     // Add method id dönsün.
-
+/*
     @RequestMapping(value = "/creditCards",method = RequestMethod.GET)
     public ResponseEntity<Iterable<CreditCard>> getCreditCards() {
         Iterable<CreditCard> creditCardList = creditCardService.getCreditCards();
@@ -72,6 +67,6 @@ public class CreditCardController {
     public ResponseEntity<String> deleteAllCards(){
         creditCardService.deleteAllCreditCards();
         return ResponseEntity.ok("Deleted All Cards!");
-    }
+    }*/
 
 }
