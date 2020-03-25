@@ -1,42 +1,44 @@
 package com.restapi.server.service;
 
-import com.restapi.server.dao.DonateDao;
-import com.restapi.server.model.Donate;
+import com.restapi.server.dao.DonatesDao;
+import com.restapi.server.model.DonateTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DonatesServiceImpl implements DonateService {
-    private final DonateDao donateDao;
+public class DonatesServiceImpl implements DonatesService {
+
+    private final DonatesDao donatesDao;
 
     @Autowired
-    public DonatesServiceImpl(DonateDao donateDao){ this.donateDao = donateDao; }
+    public DonatesServiceImpl(DonatesDao donatesDao){ this.donatesDao = donatesDao; }
 
 
 
     @Override
-    public void addDonates(Donate donate) {
-        donateDao.save(donate);
+    public void addDonates(DonateTable donate) {
+        donatesDao.save(donate);
     }
 
     @Override
-    public Iterable<Donate> getDonates() {
-        return donateDao.findAll();
+    public Iterable<DonateTable> getDonates() {
+        return donatesDao.findAll();
     }
 
     @Override
-    public Donate getDonatesById(int id) {
-        return donateDao.findById(id).get();
+    public DonateTable getDonatesById(int id) {
+        return donatesDao.findById(id).get();
     }
 
     @Override
-    public void deleteDonateById(int id) {
-        donateDao.delete(donateDao.findById(id).get());
+    public void deleteDonatesById(int id) {
+        donatesDao.delete(donatesDao.findById(id).get());
     }
 
+
     @Override
-    public void updateDonateById(Donate donates, int id) {
-        Donate oldDonate = donateDao.findById(id).get();
+    public void updateDonatesById(DonateTable donates, int id) {
+        DonateTable oldDonate = donatesDao.findById(id).get();
         oldDonate.setCommet(donates.getCommet());
         oldDonate.setCreditCardNumber(donates.getCreditCardNumber());
         oldDonate.setCvvNumber(donates.getCvvNumber());
@@ -44,10 +46,11 @@ public class DonatesServiceImpl implements DonateService {
         oldDonate.setFoodType(donates.getFoodType());
         oldDonate.setFullName(donates.getFullName());
         oldDonate.setContainerId(donates.getContainerId());
+        oldDonate.setLiked(donates.getLiked());
     }
 
     @Override
     public void deleteAllDonates() {
-        donateDao.deleteAll();
+        donatesDao.deleteAll();
     }
 }

@@ -7,16 +7,16 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "donates")
+@Table(name = "donateTable")
 @Getter
 @Setter
 @ToString
-public class Donate {
+public class DonateTable {
     @Id
-    @GeneratedValue(generator = "donates_generator")
+    @GeneratedValue(generator = "donateTable_generator")
     @SequenceGenerator(
-            name = "donates_generator",
-            sequenceName = "donates_sequence",
+            name = "donateTable_generator",
+            sequenceName = "donateTable_sequence",
             initialValue = 10
     )
     private int donates_id;
@@ -24,6 +24,10 @@ public class Donate {
     private String foodType;
     @Column
     private String commet;
+    @Column
+    private int liked;
+    @Column
+    private String comment;
 
     @Column(name = "container_id")
     private int containerId;

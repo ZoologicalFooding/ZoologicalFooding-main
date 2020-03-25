@@ -1,7 +1,7 @@
 package com.restapi.server.controller;
 
-import com.restapi.server.model.Donate;
-import com.restapi.server.service.DonateService;
+import com.restapi.server.model.DonateTable;
+import com.restapi.server.service.DonatesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -11,39 +11,41 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin("*")
 public class DonateController {
 
-    private final DonateService donateService;
+    private final DonatesService donatesService;
 
     @Autowired
-    public DonateController(DonateService donateService){
-        this.donateService = donateService;
+    public DonateController(DonatesService donatesService){
+        this.donatesService = donatesService;
     }
 
     @RequestMapping(value = "/donates", method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Donate>> getDonates() {
-        Iterable<Donate> donates = donateService.getDonates();
+    public ResponseEntity<Iterable<DonateTable>> getDonates() {
+        Iterable<DonateTable> donates = donatesService.getDonates();
         return ResponseEntity.ok(donates);
     }
     @RequestMapping(value = "/donate/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Donate> getDonate(@PathVariable int id) {
-        return ResponseEntity.ok(donateService.getDonatesById(id));
+    public ResponseEntity<DonateTable> getDonate(@PathVariable int id) {
+        return ResponseEntity.ok(donatesService.getDonatesById(id));
     }
 
     @RequestMapping(value = "/deleteDonate/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Donate> deleteDonate(@PathVariable int id) {
-        Donate donate = donateService.getDonatesById(id);
-        donateService.deleteDonateById(id);
+    public ResponseEntity<DonateTable> deleteDonate(@PathVariable int id) {
+        DonateTable donate = donatesService.getDonatesById(id);
+        donatesService.deleteDonatesById(id);
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/addDonate", method = RequestMethod.POST)
-    public ResponseEntity<Donate> addFill(@RequestBody Donate donate, Authentication authentication) {
+    public ResponseEntity<DonateTable> addFill(@RequestBody DonateTable donate, Authentication authentication) {
         //Member memb = memberService.findByUserName(authentication.getName());
         //donateService.setMemberId(memb.getMemberID());
-        donateService.addDonates(donate);
+        donatesService.addDonates(donate);
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/editDonate/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Donate> editDonate(@RequestBody(required = false) Donate donate, @PathVariable int id) {
-        donateService.updateDonateById(donate,id);
+    public ResponseEntity<DonateTable> editDonate(@RequestBody(required = false) DonateTable donate, @PathVariable int id) {
+        donatesService.updateDonatesById(donate,id);
         return ResponseEntity.ok(donate);
     }
+
+
 }
