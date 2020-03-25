@@ -47,10 +47,20 @@ public class DonatesServiceImpl implements DonatesService {
         oldDonate.setFullName(donates.getFullName());
         oldDonate.setContainerId(donates.getContainerId());
         oldDonate.setLiked(donates.getLiked());
+        donatesDao.save(oldDonate);
     }
 
     @Override
     public void deleteAllDonates() {
         donatesDao.deleteAll();
+    }
+
+    @Override
+    public void likeDonate(int id) {
+        DonateTable donateTable = donatesDao.findById(id).get();
+        int like = donateTable.getLiked();
+        like = like + 1;
+        donateTable.setLiked(like);
+        donatesDao.save(donateTable);
     }
 }

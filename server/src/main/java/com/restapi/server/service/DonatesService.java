@@ -9,5 +9,5 @@ public interface DonatesService {
     void deleteDonatesById(int id);
     void updateDonatesById(DonateTable donates, int id);
     void deleteAllDonates();
-
+    void likeDonate(int id);
 }

@@ -1,7 +1,9 @@
 package com.restapi.server.controller;
 
 import com.restapi.server.model.DonateTable;
+import com.restapi.server.model.FoodContainer;
 import com.restapi.server.service.DonatesService;
+import com.restapi.server.service.FoodContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class DonateController {
 
     private final DonatesService donatesService;
+    private final FoodContainerService foodContainerService;
 
     @Autowired
-    public DonateController(DonatesService donatesService){
+    public DonateController(DonatesService donatesService,FoodContainerService foodContainerService){
         this.donatesService = donatesService;
+        this.foodContainerService = foodContainerService;
     }
 
     @RequestMapping(value = "/donates", method = RequestMethod.GET)
@@ -31,13 +35,13 @@ public class DonateController {
     @RequestMapping(value = "/deleteDonate/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<DonateTable> deleteDonate(@PathVariable int id) {
         DonateTable donate = donatesService.getDonatesById(id);
+        FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
+        food.getDonatesList().remove(donate);
         donatesService.deleteDonatesById(id);
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/addDonate", method = RequestMethod.POST)
-    public ResponseEntity<DonateTable> addFill(@RequestBody DonateTable donate, Authentication authentication) {
-        //Member memb = memberService.findByUserName(authentication.getName());
-        //donateService.setMemberId(memb.getMemberID());
+    public ResponseEntity<DonateTable> addDonate(@RequestBody DonateTable donate, Authentication authentication) {
         donatesService.addDonates(donate);
         return ResponseEntity.ok(donate);
     }
@@ -46,14 +50,10 @@ public class DonateController {
         donatesService.updateDonatesById(donate,id);
         return ResponseEntity.ok(donate);
     }
-    @RequestMapping(value = "/likeDonate/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<DonateTable> editDonate(@PathVariable int id) {
-        DonateTable donate = donatesService.getDonatesById(id);
-        int like = donate.getLiked();
-        like++;
-        donate.setLiked(like);
-        donatesService.updateDonatesById(donate,id);
-        return ResponseEntity.ok(donate);
+    @RequestMapping(value = "/likeDonate/{id}", method = RequestMethod.POST)
+    public ResponseEntity<DonateTable> likeDonate(@PathVariable int id) {
+        donatesService.likeDonate(id);
+        return ResponseEntity.ok(donatesService.getDonatesById(id));
     }
 
 }
