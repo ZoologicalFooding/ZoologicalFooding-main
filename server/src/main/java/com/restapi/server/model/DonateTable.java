@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "donateTable")
@@ -19,15 +21,16 @@ public class DonateTable {
             sequenceName = "donateTable_sequence",
             initialValue = 10
     )
-    private int donates_id;
+    @Column(name = "donates_id")
+    private int donatesID;
     @Column
     private String foodType;
     @Column
     private String commet;
     @Column
     private int liked;
-    @Column
-    private String comment;
+    //@Column
+    //private String comment;
 
     @Column(name = "container_id")
     private int containerId;
@@ -40,6 +43,10 @@ public class DonateTable {
     private int expiration_date;
     @Column
     private int cvvNumber;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "donates_id", referencedColumnName= "donates_id")
+    private List<Comment> commentsList = new ArrayList<>();
 
 
 }

@@ -13,8 +13,6 @@ public class DonatesServiceImpl implements DonatesService {
     @Autowired
     public DonatesServiceImpl(DonatesDao donatesDao){ this.donatesDao = donatesDao; }
 
-
-
     @Override
     public void addDonates(DonateTable donate) {
         donatesDao.save(donate);
@@ -34,7 +32,6 @@ public class DonatesServiceImpl implements DonatesService {
     public void deleteDonatesById(int id) {
         donatesDao.delete(donatesDao.findById(id).get());
     }
-
 
     @Override
     public void updateDonatesById(DonateTable donates, int id) {
