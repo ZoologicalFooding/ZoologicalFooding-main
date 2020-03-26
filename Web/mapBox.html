@@ -23,7 +23,7 @@
 
     <style>
         .marker{
-            background-image: url('icons/cat-solid.svg');
+            background-image: url('icons/dog-solid.svg');
             background-size: cover;
             width: 50px;
             height: 50px;
@@ -31,7 +31,7 @@
             cursor: pointer;
         }
         .markerCat {
-            background-image: url('icons/cat.png');
+            background-image: url('icons/cat-solid.svg');
             background-size: cover;
             width: 50px;
             height: 50px;
@@ -39,7 +39,7 @@
             cursor: pointer;
         }
         .markerDog {
-            background-image: url('icons/dog.png');
+            background-image: url('icons/dog-solid.svg');
             background-size: cover;
             width: 50px;
             height: 50px;
@@ -96,25 +96,41 @@
                     var coordinates = [Number(value.longitude),Number(value.latitude)];
                     
                     if(value.type == "dog"){
+                        el.className = 'markerDog';
                         new mapboxgl.Marker(el)
                         .setLngLat(coordinates)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                            .setHTML('<h3>Name: ' + value.name + '</h3><p>Type: '+ value.type +'<p>Weight: ' + value.weight + '</p>'))
+                            .setHTML(   `<h4> ${value.name} </h4>
+                                         <p> Type: ${value.type} </p>
+                                         <p> Weight: ${value.weight} </p>
+                                         <button type="button" onclick="setConId(${value.containerID})">Details</button>
+                                        `))
                         .addTo(map);
                     }
 
                     if(value.type == "cat"){
-
+                        el.className = 'markerCat';
                         new mapboxgl.Marker(el)
                         .setLngLat(coordinates)
                         .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                            .setHTML('<h3>Name: ' + value.name + '</h3><p>Type: '+ value.type +'<p>Weight: ' + value.weight + '</p>'))
+                        .setHTML(       `<h4> ${value.name} </h4>
+                                         <p> Type: ${value.type} </p>
+                                         <p> Weight: ${value.weight} </p>
+                                         <button type="button" onclick="setConId(${value.containerID})">Details</button>
+                                        `))
                         .addTo(map);
 
                     }
                     
                 });
             });
+        }
+
+
+        // set clicked container's id
+        function setConId(x){
+            localStorage.setItem("conID",x);
+            window.open("containerDetails.html","_self")
         }
         
     </script>
