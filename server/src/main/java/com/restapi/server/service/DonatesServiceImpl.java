@@ -5,6 +5,8 @@ import com.restapi.server.model.DonateTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class DonatesServiceImpl implements DonatesService {
 
@@ -15,6 +17,7 @@ public class DonatesServiceImpl implements DonatesService {
 
     @Override
     public void addDonates(DonateTable donate) {
+        donate.setDonateTime(new Date());
         donatesDao.save(donate);
     }
 
