@@ -26,23 +26,39 @@ public class DonateTable {
     @Column
     private String foodType;
     @Column
-    private String commet;
+    private String amount;
     @Column
     private int liked;
-    //@Column
-    //private String comment;
 
     @Column(name = "container_id")
     private int containerId;
 
     @Column
+    private String donateType;
+
+    @Column
+    private String promotionCode;
+
+    @Column
     private int creditCardNumber;
+
     @Column
     private String fullName;
+
     @Column
     private int expiration_date;
+
     @Column
     private int cvvNumber;
+
+    @Column
+    private String recieverName;
+
+    @Column
+    private String IBAN;
+
+
+
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "donates_id", referencedColumnName= "donates_id")

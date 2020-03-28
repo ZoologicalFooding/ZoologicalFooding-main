@@ -36,7 +36,7 @@ public class DonatesServiceImpl implements DonatesService {
     @Override
     public void updateDonatesById(DonateTable donates, int id) {
         DonateTable oldDonate = donatesDao.findById(id).get();
-        oldDonate.setCommet(donates.getCommet());
+        oldDonate.setAmount(donates.getAmount());
         oldDonate.setCreditCardNumber(donates.getCreditCardNumber());
         oldDonate.setCvvNumber(donates.getCvvNumber());
         oldDonate.setExpiration_date(donates.getExpiration_date());
@@ -44,6 +44,10 @@ public class DonatesServiceImpl implements DonatesService {
         oldDonate.setFullName(donates.getFullName());
         oldDonate.setContainerId(donates.getContainerId());
         oldDonate.setLiked(donates.getLiked());
+        oldDonate.setPromotionCode(donates.getPromotionCode());
+        oldDonate.setDonateType(donates.getDonateType());
+        oldDonate.setIBAN(donates.getIBAN());
+        oldDonate.setRecieverName(donates.getIBAN());
         donatesDao.save(oldDonate);
     }
 

@@ -44,6 +44,10 @@ public class DonateController {
     }
     @RequestMapping(value = "/addDonate", method = RequestMethod.POST)
     public ResponseEntity<DonateTable> addDonate(@RequestBody DonateTable donate) {
+        donate.setDonateType("CREDITCARD");
+        donate.setPromotionCode("");
+        donate.setRecieverName("");
+        donate.setIBAN("");
         donatesService.addDonates(donate);
         return ResponseEntity.ok(donate);
     }
@@ -56,6 +60,21 @@ public class DonateController {
     public ResponseEntity<DonateTable> likeDonate(@PathVariable int id) {
         donatesService.likeDonate(id);
         return ResponseEntity.ok(donatesService.getDonatesById(id));
+    }
+    @RequestMapping(value = "/addDonateProCode", method = RequestMethod.POST)
+    public ResponseEntity<DonateTable> addDonateProCode(@RequestBody DonateTable donate) {
+        donate.setDonateType("PROMOTIONCODE");
+        donate.setRecieverName("");
+        donate.setIBAN("");
+        donatesService.addDonates(donate);
+        return ResponseEntity.ok(donate);
+    }
+    @RequestMapping(value = "/addDonateEft", method = RequestMethod.POST)
+    public ResponseEntity<DonateTable> addDonateEft(@RequestBody DonateTable donate) {
+        donate.setDonateType("EFT");
+        donate.setPromotionCode("");
+        donatesService.addDonates(donate);
+        return ResponseEntity.ok(donate);
     }
 
 }
