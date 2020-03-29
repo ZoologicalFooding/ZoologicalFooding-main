@@ -52,7 +52,7 @@ public class FoodContainerServiceImpl implements FoodContainerService {
         oldContainer.setCountry(container.getCountry());
         oldContainer.setIP(container.getIP());
         oldContainer.setRegion(container.getRegion());
-        oldContainer.setContainerUpdateTime(container.getContainerUpdateTime());
+        oldContainer.setContainerUpdateTime(new Date());
         foodDao.save(oldContainer);
     }
 
