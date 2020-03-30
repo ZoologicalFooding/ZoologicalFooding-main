@@ -1,0 +1,85 @@
+body {
+    font-family: "Montserrat";
+    text-align: center;
+  }
+
+  p {
+    color: #8f8f8f;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat-Bold";
+  }
+
+  .big-heading {
+    font-family: "Montserrat-Black";
+    font-size: 3.5rem;
+    line-height: 1.5;
+    padding-top: 250px;
+    padding-bottom: 75px;
+  }
+
+  .section-heading {
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+
+  .colored-section {
+    background-color: #212529;
+    color: #fff;
+  }
+  
+  .white-section {
+    background-color: #fff;
+  }
+
+  .title-image {
+    padding-top: 50px;
+    width: 380px;
+    height: 766px;
+    right: 30%;
+  }
+
+  .feature-title {
+    font-size: 1.5rem;
+  }
+
+  .feature-box {
+    padding: 4.5%;
+  }
+
+  .icon {
+    margin-bottom: 1rem;
+  }
+
+  .icon:hover {
+    color: #554f50;
+  }
+
+  .about-heading{
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+
+  .about-text{
+    font-size: 2rem;
+    line-height: 1.5;
+  }
+
+
+  #about{
+    padding: 7% 10%;
+  }
+
+  #how-to-use{
+    padding: 7% 15%;
+  }
+
+
+  #developers {
+    padding: 100px;
+  }
+  
+  .card-row{
+      padding: 2rem;
+  }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <!-- Bootstrap Css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Bootstrap Js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>
+            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
+            <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
+        </div>
+    </div>
+
+    <h1> -- </h1>
+
+    <!--Container Details-->
+    <section id="container-details">
+
+        <h1 class="h1-title" style="padding-left: 4.5rem;"> </h1>
+
+        <div class="row" style="padding: 4.5rem;">
+
+            <div class="col-lg-6">
+
+                <img class="container-image" src="images/kugulu.jpg" style="width: 500px;">
+
+            </div>
+
+            <div class="col-lg-6">
+                <p class="current-weight"> Current Weight: </p>
+                <p class="percentage"> Full Percentage: </p>
+                <button type="button" class="btn btn-secondary">Donate!</button>
+            </div>
+
+            <div class="col-lg-12" style="margin-top: 1rem;">
+                <p class="address">Address: </p>
+                <button type="button" class="btn btn-secondary">Get Directions!</button>
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <!-- Container History -->
+    <section id="container-history">
+
+    </section>
+
+
+
+    <script>
+
+        var id = localStorage.getItem("conID");
+
+        var url = "http://restservices496.herokuapp.com/container/" + id;
+
+        var containerData;
+
+        $.getJSON(url, function (data) {
+
+            $('.h1-title').append(data.name);
+            $('.current-weight').append(data.weight + ' gr');
+            $('.percentage').append(data.weight/10 + '%');
+            $('.address').append(data.address);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
