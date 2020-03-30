@@ -5,20 +5,36 @@ Restful Api
     Spring Boot 
     Hibernate
     Heroku - Heroku Postgresql
+    Library -> spring mail, lombok, spring security, spring postgresql.
 
     Restful API URL's : 
-    https://restservices496.herokuapp.com/members    
-    https://restservices496.herokuapp.com/member/id  
-    https://restservices496.herokuapp.com/addMember
-    https://restservices496.herokuapp.com/deleteMember/id
-    https://restservices496.herokuapp.com/editMember/id
-
+    ________________________________________________________________________
+    
     https://restservices496.herokuapp.com/containers
     https://restservices496.herokuapp.com/container/id
     https://restservices496.herokuapp.com/addContainer
     https://restservices496.herokuapp.com/editContainer/id
     https://restservices496.herokuapp.com/deleteContainer/id
 
+    https://restservices496.herokuapp.com/donates
+    https://restservices496.herokuapp.com/donate/id
+    https://restservices496.herokuapp.com/addDonate
+    https://restservices496.herokuapp.com/deleteDonate/id
+    https://restservices496.herokuapp.com/editDonate/id
+
+    https://restservices496.herokuapp.com/emails
+    https://restservices496.herokuapp.com/email/id
+    https://restservices496.herokuapp.com/sendEmail
+    https://restservices496.herokuapp.com/deleteEmail/id
+    https://restservices496.herokuapp.com/editEmail/id
+    
+    _________________________________________________________________________
+    https://restservices496.herokuapp.com/members    
+    https://restservices496.herokuapp.com/member/id  
+    https://restservices496.herokuapp.com/addMember
+    https://restservices496.herokuapp.com/deleteMember/id
+    https://restservices496.herokuapp.com/editMember/id
+    
     https://restservices496.herokuapp.com/creditCards
     https://restservices496.herokuapp.com/creditCard/number
     https://restservices496.herokuapp.com/addCreditCard
