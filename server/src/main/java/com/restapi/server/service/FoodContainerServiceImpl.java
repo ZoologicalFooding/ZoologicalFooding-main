@@ -5,6 +5,8 @@ import com.restapi.server.model.FoodContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class FoodContainerServiceImpl implements FoodContainerService {
     private final FoodContainerDao foodDao;
@@ -16,6 +18,8 @@ public class FoodContainerServiceImpl implements FoodContainerService {
 
     @Override
     public void addContainer(FoodContainer container) {
+        container.setContainerAddTime(new Date());
+        container.setContainerUpdateTime(new Date());
         foodDao.save(container);
     }
 
@@ -48,6 +52,7 @@ public class FoodContainerServiceImpl implements FoodContainerService {
         oldContainer.setCountry(container.getCountry());
         oldContainer.setIP(container.getIP());
         oldContainer.setRegion(container.getRegion());
+        oldContainer.setContainerUpdateTime(new Date());
         foodDao.save(oldContainer);
     }
 

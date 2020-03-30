@@ -6,8 +6,9 @@ import com.restapi.server.service.DonatesService;
 import com.restapi.server.service.FoodContainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -31,17 +32,22 @@ public class DonateController {
     public ResponseEntity<DonateTable> getDonate(@PathVariable int id) {
         return ResponseEntity.ok(donatesService.getDonatesById(id));
     }
-
     @RequestMapping(value = "/deleteDonate/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<DonateTable> deleteDonate(@PathVariable int id) {
         DonateTable donate = donatesService.getDonatesById(id);
         FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
-        food.getDonatesList().remove(donate);
+        List<DonateTable> listDonate = food.getDonatesList();
+        listDonate.remove(donate);
+        food.setDonatesList(listDonate);
         donatesService.deleteDonatesById(id);
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/addDonate", method = RequestMethod.POST)
-    public ResponseEntity<DonateTable> addDonate(@RequestBody DonateTable donate, Authentication authentication) {
+    public ResponseEntity<DonateTable> addDonate(@RequestBody DonateTable donate) {
+        donate.setDonateType("CREDITCARD");
+        donate.setPromotionCode("");
+        donate.setRecieverName("");
+        donate.setIBAN("");
         donatesService.addDonates(donate);
         return ResponseEntity.ok(donate);
     }
@@ -54,6 +60,21 @@ public class DonateController {
     public ResponseEntity<DonateTable> likeDonate(@PathVariable int id) {
         donatesService.likeDonate(id);
         return ResponseEntity.ok(donatesService.getDonatesById(id));
+    }
+    @RequestMapping(value = "/addDonateProCode", method = RequestMethod.POST)
+    public ResponseEntity<DonateTable> addDonateProCode(@RequestBody DonateTable donate) {
+        donate.setDonateType("PROMOTIONCODE");
+        donate.setRecieverName("");
+        donate.setIBAN("");
+        donatesService.addDonates(donate);
+        return ResponseEntity.ok(donate);
+    }
+    @RequestMapping(value = "/addDonateEft", method = RequestMethod.POST)
+    public ResponseEntity<DonateTable> addDonateEft(@RequestBody DonateTable donate) {
+        donate.setDonateType("EFT");
+        donate.setPromotionCode("");
+        donatesService.addDonates(donate);
+        return ResponseEntity.ok(donate);
     }
 
 }

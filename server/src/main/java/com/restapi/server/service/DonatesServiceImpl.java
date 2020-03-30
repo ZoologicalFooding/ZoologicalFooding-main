@@ -5,6 +5,8 @@ import com.restapi.server.model.DonateTable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class DonatesServiceImpl implements DonatesService {
 
@@ -13,10 +15,9 @@ public class DonatesServiceImpl implements DonatesService {
     @Autowired
     public DonatesServiceImpl(DonatesDao donatesDao){ this.donatesDao = donatesDao; }
 
-
-
     @Override
     public void addDonates(DonateTable donate) {
+        donate.setDonateTime(new Date());
         donatesDao.save(donate);
     }
 
@@ -35,11 +36,10 @@ public class DonatesServiceImpl implements DonatesService {
         donatesDao.delete(donatesDao.findById(id).get());
     }
 
-
     @Override
     public void updateDonatesById(DonateTable donates, int id) {
         DonateTable oldDonate = donatesDao.findById(id).get();
-        oldDonate.setCommet(donates.getCommet());
+        oldDonate.setAmount(donates.getAmount());
         oldDonate.setCreditCardNumber(donates.getCreditCardNumber());
         oldDonate.setCvvNumber(donates.getCvvNumber());
         oldDonate.setExpiration_date(donates.getExpiration_date());
@@ -47,6 +47,10 @@ public class DonatesServiceImpl implements DonatesService {
         oldDonate.setFullName(donates.getFullName());
         oldDonate.setContainerId(donates.getContainerId());
         oldDonate.setLiked(donates.getLiked());
+        oldDonate.setPromotionCode(donates.getPromotionCode());
+        oldDonate.setDonateType(donates.getDonateType());
+        oldDonate.setIBAN(donates.getIBAN());
+        oldDonate.setRecieverName(donates.getIBAN());
         donatesDao.save(oldDonate);
     }
 
