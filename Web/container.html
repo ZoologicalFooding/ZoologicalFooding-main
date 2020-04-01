@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Container</title>
 
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <!-- Bootstrap Css -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Bootstrap Js -->
+    <link rel="stylesheet" href="styles/body-styles.css">
+
+    !-- Bootstrap JS-->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -26,41 +33,90 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <style>
+        .h1-title {
+            padding-left: 4.5rem;
+        }
+
+        .row {
+            padding-left: 4.5rem;
+            padding-top: 1.5rem;
+        }
+
+        .container-image {
+            width: 600px;
+        }
+
+        #container-history{
+            margin-top: 3rem;
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress{
+            margin-bottom: 1rem;
+            height: 25px;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
-                    class="fa fa-bars"></i></a>
-            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>
-            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
-            <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
+    <!-- Nav Bar -->
+    <nav class="navbar fixed-top bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="">Zoological Fooding</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="landing.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mapBox.html">Containers Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="containers.html">Containers List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="members.html">Members</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
     <h1> -- </h1>
 
     <!--Container Details-->
     <section id="container-details">
 
-        <h1 class="h1-title" style="padding-left: 4.5rem;"> </h1>
+        <h1 class="h1-title"> </h1>
 
-        <div class="row" style="padding: 4.5rem;">
+        <div class="row">
 
             <div class="col-lg-6">
 
-                <img class="container-image" src="images/kugulu.jpg" style="width: 500px;">
+                <img class="container-image" src="images/kugulu.jpg">
 
             </div>
 
             <div class="col-lg-6">
                 <p class="current-weight"> Current Weight: </p>
+                
                 <p class="percentage"> Full Percentage: </p>
+                <div class="progress" style="width: 75%;">
+                    <div class="progress-bar bg-secondary" style="width: 100%">
+                        100%
+                    </div>
+                </div>
+                
                 <button type="button" class="btn btn-secondary">Donate!</button>
             </div>
 
@@ -76,7 +132,20 @@
 
     <!-- Container History -->
     <section id="container-history">
+        <div class="container">
+            <h2>Container Donation History</h2>
 
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="container-history-table">
+                    <tr>
+                        <th>Philanthropist Name</th>
+                        <th>Food Type</th>
+                        <th>Amount</th>
+                        <th>Donate Time</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </section>
 
 
@@ -87,14 +156,32 @@
 
         var url = "http://restservices496.herokuapp.com/container/" + id;
 
-        var containerData;
+        var donateHistory;
 
         $.getJSON(url, function (data) {
 
             $('.h1-title').append(data.name);
             $('.current-weight').append(data.weight + ' gr');
-            $('.percentage').append(data.weight/10 + '%');
+
+            var percent = data.weight / 10 + '%';
+            $('.progress-bar').css('width',percent);
+            $('.progress-bar').text(percent);
+
             $('.address').append(data.address);
+
+            var donatesList = data.donatesList;
+
+            $.each(donatesList, function (key, value) {
+                donateHistory += '<tr>';
+                donateHistory += '<td>' + value.fullName + '</td>';
+                donateHistory += '<td>' + value.foodType + '</td>';
+                donateHistory += '<td>' + value.amount + '</td>';
+                donateHistory += '<td>' + value.donateTime + '</td>';
+                donateHistory += '</tr>';
+            });
+
+            $('#container-history-table').append(donateHistory);
+
 
         });
 

@@ -9,42 +9,60 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    !-- Bootstrap JS-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <style>
-        body {
-            font-family: "Lato", sans-serif
-        }
-
-        .mySlides {
-            display: none
-        }
-    </style>
+    <link rel="stylesheet" href="styles/body-styles.css">
+    
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-            <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-                href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i
-                    class="fa fa-bars"></i></a>
-            <a href="mapBox.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Containers Map</a>        
-            <a href="containers.html" class="w3-bar-item w3-button w3-padding-large">Containers List</a>
-            <a href="members.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Members</a>
+    <!-- Nav Bar -->
+    <nav class="navbar fixed-top bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="">Zoological Fooding</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="landing.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mapBox.html">Containers Map</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="containers.html">Containers List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="members.html">Members</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
     <h1> -- </h1>
 
@@ -95,7 +113,7 @@
                     container_data += '<td>' + value.latitude + '</td>' ;
                     container_data += '<td>' + value.address + '</td>' ;
                     container_data += '<td>' + value.weight + '</td>' ;
-                    container_data += '<td>' + '<button type="button" class="btn">Details</button>' + '</td>';
+                    container_data += '<td>' + '<button type="button" class="btn btn-secondary">Details</button>' + '</td>';
                     container_data += '</tr>';
                 });
                 $('#containers-table').append(container_data);
