@@ -21,13 +21,22 @@ Restful Api
     https://restservices496.herokuapp.com/addDonate
     https://restservices496.herokuapp.com/deleteDonate/id
     https://restservices496.herokuapp.com/editDonate/id
+    https://restservices496.herokuapp.com/likeDonate/id
+    https://restservices496.herokuapp.com/addDonateProCode
 
     https://restservices496.herokuapp.com/emails
     https://restservices496.herokuapp.com/email/id
     https://restservices496.herokuapp.com/sendEmail
     https://restservices496.herokuapp.com/deleteEmail/id
     https://restservices496.herokuapp.com/editEmail/id
+
+    https://restservices496.herokuapp.com/comments
+    https://restservices496.herokuapp.com/addComment
+    https://restservices496.herokuapp.com/likeComment/id
+    https://restservices496.herokuapp.com/editComment/id
+    https://restservices496.herokuapp.com/deleteComment/id
     
+
     _________________________________________________________________________
     https://restservices496.herokuapp.com/members    
     https://restservices496.herokuapp.com/member/id  
