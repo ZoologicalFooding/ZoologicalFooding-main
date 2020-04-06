@@ -51,6 +51,7 @@ public class DonatesServiceImpl implements DonatesService {
         oldDonate.setDonateType(donates.getDonateType());
         oldDonate.setIBAN(donates.getIBAN());
         oldDonate.setRecieverName(donates.getIBAN());
+        oldDonate.setDonateFoodName(donates.getDonateFoodName());
         donatesDao.save(oldDonate);
     }
 

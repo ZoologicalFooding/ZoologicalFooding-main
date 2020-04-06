@@ -59,6 +59,9 @@ public class DonateTable {
     @Column
     private String IBAN;
 
+    @Column
+    private String donateFoodName;
+
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date donateTime;
