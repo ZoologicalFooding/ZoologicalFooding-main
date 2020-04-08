@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,9 +27,9 @@ public class DonateTable {
     @Column
     private String foodType;
     @Column
-    private String amount;
+    private String amountStr;
     @Column
-    private int liked;
+    private String likedStr;
 
     @Column(name = "container_id")
     private int containerId;
@@ -42,16 +41,16 @@ public class DonateTable {
     private String promotionCode;
 
     @Column
-    private int creditCardNumber;
+    private String creditCardNumberStr;
 
     @Column
     private String fullName;
 
     @Column
-    private int expiration_date;
+    private String expiration_dateStr;
 
     @Column
-    private int cvvNumber;
+    private String cvvNumberStr;
 
     @Column
     private String recieverName;
@@ -62,16 +61,17 @@ public class DonateTable {
     @Column
     private String donateFoodName;
 
+    @Column
+    private String donaterMail;
+
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date donateTime;
 
 
-
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "donates_id", referencedColumnName= "donates_id")
-    private List<Comment> commentsList = new ArrayList<>();
+    private List<Comment> commentsList;
 
 
 }

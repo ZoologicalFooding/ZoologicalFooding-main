@@ -39,14 +39,14 @@ public class DonatesServiceImpl implements DonatesService {
     @Override
     public void updateDonatesById(DonateTable donates, int id) {
         DonateTable oldDonate = donatesDao.findById(id).get();
-        oldDonate.setAmount(donates.getAmount());
-        oldDonate.setCreditCardNumber(donates.getCreditCardNumber());
-        oldDonate.setCvvNumber(donates.getCvvNumber());
-        oldDonate.setExpiration_date(donates.getExpiration_date());
+        oldDonate.setAmountStr(donates.getAmountStr());
+        oldDonate.setCreditCardNumberStr(donates.getCreditCardNumberStr());
+        oldDonate.setCvvNumberStr(donates.getCvvNumberStr());
+        oldDonate.setExpiration_dateStr(donates.getExpiration_dateStr());
         oldDonate.setFoodType(donates.getFoodType());
         oldDonate.setFullName(donates.getFullName());
         oldDonate.setContainerId(donates.getContainerId());
-        oldDonate.setLiked(donates.getLiked());
+        oldDonate.setLikedStr(donates.getLikedStr());
         oldDonate.setPromotionCode(donates.getPromotionCode());
         oldDonate.setDonateType(donates.getDonateType());
         oldDonate.setIBAN(donates.getIBAN());
@@ -63,9 +63,9 @@ public class DonatesServiceImpl implements DonatesService {
     @Override
     public void likeDonate(int id) {
         DonateTable donateTable = donatesDao.findById(id).get();
-        int like = donateTable.getLiked();
+        int like = Integer.parseInt(donateTable.getLikedStr());
         like = like + 1;
-        donateTable.setLiked(like);
+        donateTable.setLikedStr(like+"");
         donatesDao.save(donateTable);
     }
 }

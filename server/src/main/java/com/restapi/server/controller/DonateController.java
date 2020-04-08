@@ -1,13 +1,17 @@
 package com.restapi.server.controller;
 
 import com.restapi.server.model.DonateTable;
+import com.restapi.server.model.Email;
 import com.restapi.server.model.FoodContainer;
 import com.restapi.server.model.ProCodeTable;
 import com.restapi.server.service.DonatesService;
+import com.restapi.server.service.EmailService;
 import com.restapi.server.service.FoodContainerService;
 import com.restapi.server.service.ProCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +23,16 @@ public class DonateController {
     private final DonatesService donatesService;
     private final FoodContainerService foodContainerService;
     private final ProCodeService proCodeService;
+    private final EmailService emailService;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Autowired
-    public DonateController(ProCodeService proCodeService,DonatesService donatesService,FoodContainerService foodContainerService){
+    public DonateController(ProCodeService proCodeService,DonatesService donatesService,FoodContainerService foodContainerService, EmailService emailService){
         this.donatesService = donatesService;
         this.foodContainerService = foodContainerService;
         this.proCodeService = proCodeService;
+        this.emailService = emailService;
     }
 
     @RequestMapping(value = "/donates", method = RequestMethod.GET)
@@ -49,10 +57,21 @@ public class DonateController {
     @RequestMapping(value = "/addDonate", method = RequestMethod.POST)
     public ResponseEntity<DonateTable> addDonate(@RequestBody DonateTable donate) {
         donate.setDonateType("CREDITCARD");
-        donate.setPromotionCode("");
-        donate.setRecieverName("");
-        donate.setIBAN("");
+        donate.setPromotionCode("null");
+        donate.setRecieverName("null");
+        donate.setIBAN("null");
         donatesService.addDonates(donate);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(donate.getDonaterMail());
+        //message.setTo("zoologicalfooding@gmail.com");
+        FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
+        message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
+        message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3");
+        javaMailSender.send(message);
+        Email email = new Email();
+        email.setMessageto(donate.getDonaterMail());
+        email.setSenderFullName(donate.getFullName());
+        emailService.addEmail(email);
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/editDonate/{id}", method = RequestMethod.PUT)
@@ -75,6 +94,17 @@ public class DonateController {
         if(proCodeTable != null && proCodeTable.getValid() == 0){
             proCodeTable.setValid(1);
             donatesService.addDonates(donate);
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(donate.getDonaterMail());
+            //message.setTo("zoologicalfooding@gmail.com");
+            FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
+            message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
+            message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3");
+            javaMailSender.send(message);
+            Email email = new Email();
+            email.setMessageto(donate.getDonaterMail());
+            email.setSenderFullName(donate.getFullName());
+            emailService.addEmail(email);
             return ResponseEntity.ok(donate);
         }else
         return ResponseEntity.ok(donate);
@@ -84,6 +114,17 @@ public class DonateController {
         donate.setDonateType("EFT");
         donate.setPromotionCode("");
         donatesService.addDonates(donate);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(donate.getDonaterMail());
+        //message.setTo("zoologicalfooding@gmail.com");
+        FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
+        message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
+        message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3");
+        javaMailSender.send(message);
+        Email email = new Email();
+        email.setMessageto(donate.getDonaterMail());
+        email.setSenderFullName(donate.getFullName());
+        emailService.addEmail(email);
         return ResponseEntity.ok(donate);
     }
 
