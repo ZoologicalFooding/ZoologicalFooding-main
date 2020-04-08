@@ -2,8 +2,10 @@ package com.restapi.server.controller;
 
 import com.restapi.server.model.DonateTable;
 import com.restapi.server.model.FoodContainer;
+import com.restapi.server.model.ProCodeTable;
 import com.restapi.server.service.DonatesService;
 import com.restapi.server.service.FoodContainerService;
+import com.restapi.server.service.ProCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +13,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins= "*")
 public class DonateController {
 
     private final DonatesService donatesService;
     private final FoodContainerService foodContainerService;
+    private final ProCodeService proCodeService;
 
     @Autowired
-    public DonateController(DonatesService donatesService,FoodContainerService foodContainerService){
+    public DonateController(ProCodeService proCodeService,DonatesService donatesService,FoodContainerService foodContainerService){
         this.donatesService = donatesService;
         this.foodContainerService = foodContainerService;
+        this.proCodeService = proCodeService;
     }
 
     @RequestMapping(value = "/donates", method = RequestMethod.GET)
@@ -66,7 +70,13 @@ public class DonateController {
         donate.setDonateType("PROMOTIONCODE");
         donate.setRecieverName("");
         donate.setIBAN("");
-        donatesService.addDonates(donate);
+        int proCode = Integer.parseInt(donate.getPromotionCode());
+        ProCodeTable proCodeTable = proCodeService.getProCodeCol(proCode);
+        if(proCodeTable != null && proCodeTable.getValid() == 0){
+            proCodeTable.setValid(1);
+            donatesService.addDonates(donate);
+            return ResponseEntity.ok(donate);
+        }else
         return ResponseEntity.ok(donate);
     }
     @RequestMapping(value = "/addDonateEft", method = RequestMethod.POST)

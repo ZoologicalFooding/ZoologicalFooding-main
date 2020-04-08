@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
                 //.anyRequest().permitAll()
         http.csrf().disable();
+        http.cors().disable();
        http.logout()
        .deleteCookies("auth_code","JSESSIONID").invalidateHttpSession(true);
 
