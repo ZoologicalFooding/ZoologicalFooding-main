@@ -64,6 +64,9 @@ public class DonateTable {
     @Column
     private String donaterMail;
 
+    @Column
+    private String discountCode;
+
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date donateTime;
