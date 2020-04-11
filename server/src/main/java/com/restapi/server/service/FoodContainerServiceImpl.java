@@ -54,6 +54,7 @@ public class FoodContainerServiceImpl implements FoodContainerService {
         oldContainer.setRegion(container.getRegion());
         oldContainer.setContainerUpdateTime(new Date());
         oldContainer.setStatus(container.getStatus());
+        oldContainer.setPassCont(container.getPassCont());
         foodDao.save(oldContainer);
     }
 

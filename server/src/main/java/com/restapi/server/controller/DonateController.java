@@ -55,7 +55,7 @@ public class DonateController {
         donate.setDonateType("CREDITCARD");
         donate.setPromotionCode("null");
         donate.setRecieverName("null");
-        donate.setIBAN("null");
+        donate.setIban("null");
         int disCode = Integer.parseInt(donate.getDiscountCode());
         DiscountCodeTable discountCodeTable = discountService.getDisCodeCol(disCode);
         if(discountCodeTable!=null && discountCodeTable.getValidCol()==0){
@@ -136,7 +136,7 @@ public class DonateController {
     public ResponseEntity<DonateTable> addDonateProCode(@RequestBody DonateTable donate) {
         donate.setDonateType("PROMOTIONCODE");
         donate.setRecieverName("");
-        donate.setIBAN("");
+        donate.setIban("");
         int proCode = Integer.parseInt(donate.getPromotionCode());
         ProCodeTable proCodeTable = proCodeService.getProCodeCol(proCode);
         if(proCodeTable != null && proCodeTable.getValid() == 0){

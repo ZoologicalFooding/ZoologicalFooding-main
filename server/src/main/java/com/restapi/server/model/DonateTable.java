@@ -56,7 +56,7 @@ public class DonateTable {
     private String recieverName;
 
     @Column
-    private String IBAN;
+    private String Iban;
 
     @Column
     private String donateFoodName;

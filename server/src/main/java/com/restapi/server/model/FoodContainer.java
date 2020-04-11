@@ -47,6 +47,8 @@ public class FoodContainer {
     private String City;
     @Column
     private String status;
+    @Column
+    private String passCont;
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
