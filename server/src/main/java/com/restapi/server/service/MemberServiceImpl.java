@@ -39,8 +39,9 @@ public class MemberServiceImpl implements MemberService{
         oldMember.setLast_name(mem.getLast_name());
         oldMember.setAddress(mem.getAddress());
         oldMember.setEmail(mem.getEmail());
-        oldMember.setPass(mem.getPass());
-        oldMember.setUsername(mem.getUsername());
+        //oldMember.setPass(mem.getPass());
+        //oldMember.setUsername(mem.getUsername());
+        oldMember.setPointStr(mem.getPointStr());
         memberDao.save(oldMember);
     }
 
@@ -52,6 +53,17 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member findByUserName(String name) {
         return memberDao.findByUsername(name);
+    }
+
+    @Override
+    public Member findByCode(String code) {
+
+        for(Member member : getAllMembers()){
+            if(code == member.getPointCode()){
+                return member;
+            }
+        }
+        return null;
     }
 
 

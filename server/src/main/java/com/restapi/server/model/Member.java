@@ -34,6 +34,10 @@ public class Member {
     private String username;
     @Column
     private String pass;
+    @Column
+    private String pointCode;
+    @Column
+    private String pointStr;
 
     //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     //@JoinColumn(name = "member_id", referencedColumnName= "member_id")

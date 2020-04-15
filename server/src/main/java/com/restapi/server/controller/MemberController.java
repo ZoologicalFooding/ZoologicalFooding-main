@@ -4,7 +4,11 @@ import com.restapi.server.model.Member;
 import com.restapi.server.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -12,7 +16,12 @@ public class MemberController {
     private final MemberService memberService;
 
     @Autowired
+    private JavaMailSender javaMailSender;
+
+
+    @Autowired
     public MemberController(MemberService memberService) {
+
         this.memberService = memberService;
     }
 
@@ -30,7 +39,17 @@ public class MemberController {
 
     @RequestMapping(value = "/addMember",method = RequestMethod.POST)
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
+        Random rand = new Random();
+        int rand_int = rand.nextInt(1000);
+        member.setPointCode(rand_int+"");
+        member.setPointStr("0");
         memberService.addMember(member);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(member.getEmail());
+        message.setSubject(member.getFirst_name()+" gonullu kodu ve onayi!");
+        message.setText("Puan kazanma kodunuz:" +""+member.getMemberID());
+        javaMailSender.send(message);
+
         return ResponseEntity.ok(member);
     }
     @RequestMapping(value = "/deleteMember/{id}", method = RequestMethod.DELETE)
@@ -44,6 +63,17 @@ public class MemberController {
     public ResponseEntity<Member> updateMember(@RequestBody(required = false) Member mem, @PathVariable int id) {
         memberService.updateMemberById(mem,id);
         return ResponseEntity.ok(mem);
+    }
+
+    @RequestMapping(value = "/editPoint/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Member> updatePoint(@RequestBody(required = false) Member mem, @PathVariable int id) {
+        Member member = memberService.getMemberById(id);
+        int point = Integer.parseInt(member.getPointStr());
+        int addPoint = Integer.parseInt(mem.getPointStr());
+        point = point + addPoint;
+        member.setPointStr(point+"");
+        memberService.addMember(member);
+        return ResponseEntity.ok(member);
     }
     @RequestMapping(value = "/deleteAllMembers", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteAllMembers(){

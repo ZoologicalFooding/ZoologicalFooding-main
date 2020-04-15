@@ -10,4 +10,5 @@ public interface MemberService {
     void updateMemberById(Member mem,int id);
     void deleteAllMembers();
     Member findByUserName(String name);
+    Member findByCode(String code);
 }

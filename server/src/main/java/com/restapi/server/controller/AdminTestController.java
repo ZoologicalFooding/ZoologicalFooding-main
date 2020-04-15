@@ -1,19 +1,12 @@
 package com.restapi.server.controller;
 
 
-import com.restapi.server.dao.MemberDao;
-import com.restapi.server.model.Member;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
 public class AdminTestController {
-
+/*
     @Autowired
     private MemberDao memberDao;
 
@@ -29,6 +22,6 @@ public class AdminTestController {
         memberDao.save(member);
         return authentication.getName();
     }
-
+*/
 
 }
