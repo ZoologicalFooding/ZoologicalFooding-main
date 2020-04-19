@@ -27,7 +27,10 @@ public class Comment {
     @Column
     private int likeButton;
 
-    @Column(name = "donates_id")
-    private int donatesId;
+    //@Column(name = "donates_id")
+    //private int donatesId;
+
+    @Column(name = "container_id")
+    private int containerId;
 
 }

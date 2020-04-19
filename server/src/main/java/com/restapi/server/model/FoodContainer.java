@@ -61,6 +61,11 @@ public class FoodContainer {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "container_id", referencedColumnName= "container_id")
     private List<DonateTable> donatesList = new ArrayList<>();
+
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "container_id", referencedColumnName= "container_id")
+    private List<Comment> commentsList;
     //@Column
     //private String date;
 }

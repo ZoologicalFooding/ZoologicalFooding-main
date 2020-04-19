@@ -1,10 +1,11 @@
 package com.restapi.server.controller;
 
+import com.restapi.server.model.CreditCard;
 import com.restapi.server.service.CreditCardService;
 import com.restapi.server.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -18,19 +19,14 @@ public class CreditCardController {
         this.memberService = memberService;
     }
     // Add method id dönsün.
-/*
+
     @RequestMapping(value = "/creditCards",method = RequestMethod.GET)
     public ResponseEntity<Iterable<CreditCard>> getCreditCards() {
         Iterable<CreditCard> creditCardList = creditCardService.getCreditCards();
         return ResponseEntity.ok(creditCardList);
     }
 
-    @RequestMapping(value = "/authCreditCards",method = RequestMethod.GET)
-    public ResponseEntity<Iterable<CreditCard>> getCreditCardAuth(Authentication authentication) {
-        Member memb = memberService.findByUserName(authentication.getName());
-        Iterable<CreditCard> creditCardList = memb.getCreditCardList();
-        return ResponseEntity.ok(creditCardList);
-    }
+
 
     @RequestMapping(value = "/creditCard/{number}",method = RequestMethod.GET)
     public ResponseEntity<CreditCard> getCreditCard(@PathVariable int number) {
@@ -39,20 +35,13 @@ public class CreditCardController {
     }
 
     @RequestMapping(value = "/addCreditCard",method = RequestMethod.POST)
-    public ResponseEntity<CreditCard> addCreditCard(@RequestBody CreditCard creditCard, Authentication authentication) {
-        Member memb = memberService.findByUserName(authentication.getName());
-        creditCard.setMemberId(memb.getMemberID());
+    public ResponseEntity<CreditCard> addCreditCard(@RequestBody CreditCard creditCard) {
+
         creditCardService.addCreditCard(creditCard);
         return ResponseEntity.ok(creditCard);
     }
     @RequestMapping(value = "/deleteCreditCard/{number}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteCreditCard(@PathVariable int number) {
-        CreditCard credit = creditCardService.getCreditCardByNumber(number);
-        int memberId = credit.getMemberId();
-        Member member = memberService.getMemberById(memberId);
-        List<CreditCard> list = member.getCreditCardList();
-        list.remove(credit);
-        member.setCreditCardList(list);
         creditCardService.deleteCreditCardByNumber(number);
         return ResponseEntity.ok("Deleted!");
     }
@@ -67,6 +56,6 @@ public class CreditCardController {
     public ResponseEntity<String> deleteAllCards(){
         creditCardService.deleteAllCreditCards();
         return ResponseEntity.ok("Deleted All Cards!");
-    }*/
+    }
 
 }

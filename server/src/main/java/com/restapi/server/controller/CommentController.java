@@ -2,8 +2,6 @@ package com.restapi.server.controller;
 
 
 import com.restapi.server.model.Comment;
-import com.restapi.server.model.DonateTable;
-import com.restapi.server.model.Email;
 import com.restapi.server.service.CommentService;
 import com.restapi.server.service.DonatesService;
 import com.restapi.server.service.EmailService;
@@ -43,15 +41,15 @@ public class CommentController {
         SimpleMailMessage message = new SimpleMailMessage();
 
         //message.setTo("zoologicalfooding@gmail.com");
-        DonateTable donate = donatesService.getDonatesById(comment.getDonatesId());
-        message.setTo(donate.getDonaterMail());
-        message.setSubject(donate.getFullName()+" yaptiginiz bagisa yorum geldi!");
-        message.setText(comment.getYorum() + " seklinde bir yorum yapildi!");
-        javaMailSender.send(message);
-        Email email = new Email();
-        email.setMessageto(donate.getDonaterMail());
-        email.setSenderFullName(donate.getFullName());
-        emailService.addEmail(email);
+        //DonateTable donate = donatesService.getDonatesById(comment.getDonatesId());
+        //message.setTo(donate.getDonaterMail());
+        //message.setSubject(donate.getFullName()+" yaptiginiz bagisa yorum geldi!");
+        //message.setText(comment.getYorum() + " seklinde bir yorum yapildi!");
+        //javaMailSender.send(message);
+        //Email email = new Email();
+        //email.setMessageto(donate.getDonaterMail());
+        //email.setSenderFullName(donate.getFullName());
+        //emailService.addEmail(email);
         commentService.addComment(comment);
         return ResponseEntity.ok(comment);
     }

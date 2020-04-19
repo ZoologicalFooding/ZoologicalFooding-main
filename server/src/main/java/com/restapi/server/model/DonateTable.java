@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "donateTable")
@@ -72,9 +71,9 @@ public class DonateTable {
     private Date donateTime;
 
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "donates_id", referencedColumnName= "donates_id")
-    private List<Comment> commentsList;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    //@JoinColumn(name = "donates_id", referencedColumnName= "donates_id")
+    //private List<Comment> commentsList;
 
 
 }
