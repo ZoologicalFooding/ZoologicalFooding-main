@@ -42,6 +42,7 @@ public class MemberServiceImpl implements MemberService{
         //oldMember.setPass(mem.getPass());
         //oldMember.setUsername(mem.getUsername());
         oldMember.setPointStr(mem.getPointStr());
+        oldMember.setSocialMedia(mem.getSocialMedia());
         memberDao.save(oldMember);
     }
 

@@ -42,8 +42,8 @@ public class MailController {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email.getMessageto());
         message.setSubject(email.getMessageSubject());
-        String text = email.getRequestTypeMail()+"\n "+ email.getSenderFullName() +"\n"+ email.getSenderMail()
-                +"\n"+email.getSenderPhone()+"\n"+email.getMailRequestAddress();
+        String text = email.getMessageBody()+"\n "+email.getRequestTypeMail()+"\n "+ email.getSenderFullName() +"\n"+ email.getSenderMail()
+                +"\n"+email.getSenderPhone();
         message.setText(text);
         javaMailSender.send(message);
 

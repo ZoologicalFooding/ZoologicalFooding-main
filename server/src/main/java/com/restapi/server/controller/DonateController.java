@@ -68,8 +68,8 @@ public class DonateController {
             message.setTo(donate.getDonaterMail());
             //message.setTo("zoologicalfooding@gmail.com");
             FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
-            message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
-            message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3");
+            message.setSubject("You have donated for "+food.getName()+" "+ donate.getFullName()+" thanks!");
+            message.setText("You have donated "+donate.getAmountStr()+" ,our little friends love you "+donate.getFullName()+ "! <3");
             javaMailSender.send(message);
             Email email = new Email();
             email.setMessageto(donate.getDonaterMail());
@@ -81,9 +81,9 @@ public class DonateController {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(donate.getDonaterMail());
             FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
-            message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
-            String textDisCode = "%5 indirim icin indirim kodunuz: "+discountService.getDisCodeMail()+"";
-            message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3" + " \n" +textDisCode);
+            message.setSubject("You have donated for "+food.getName()+" "+ donate.getFullName()+" thanks!");
+            String textDisCode = "%5 discount code: "+discountService.getDisCodeMail()+"";
+            message.setText("You have donated "+donate.getAmountStr()+" ,our little friends love you "+donate.getFullName()+ "! <3"+ " \n" +textDisCode);
             javaMailSender.send(message);
             Email email = new Email();
             email.setMessageto(donate.getDonaterMail());
@@ -95,9 +95,9 @@ public class DonateController {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(donate.getDonaterMail());
             FoodContainer food = foodContainerService.getContainerById(donate.getContainerId());
-            message.setSubject(food.getName()+" adli kaba bagis yaptiniz "+ donate.getFullName()+" tesekkurler!");
-            String textDisCode = "%5 indirim icin indirim kodunuz: "+discountService.getDisCodeMail()+"";
-            message.setText(donate.getAmountStr()+" miktar bagis yaptiniz!, kucuk dostlarimiz size minnettar! <3" + " \n" +textDisCode);
+            message.setSubject("You have donated for "+food.getName()+" "+ donate.getFullName()+" thanks!");
+            String textDisCode = "%5 discount code: "+discountService.getDisCodeMail()+"";
+            message.setText("You have donated "+donate.getAmountStr()+" ,our little friends love you "+donate.getFullName()+ "! <3"+ " \n" +textDisCode);
             javaMailSender.send(message);
             Email email = new Email();
             email.setMessageto(donate.getDonaterMail());

@@ -38,6 +38,8 @@ public class Member {
     private String pointCode;
     @Column
     private String pointStr;
+    @Column
+    private String socialMedia;
 
     //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     //@JoinColumn(name = "member_id", referencedColumnName= "member_id")

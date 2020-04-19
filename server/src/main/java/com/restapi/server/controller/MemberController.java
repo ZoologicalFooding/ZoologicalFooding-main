@@ -46,8 +46,8 @@ public class MemberController {
         memberService.addMember(member);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(member.getEmail());
-        message.setSubject(member.getFirst_name()+" gonullu kodu ve onayi!");
-        message.setText("Puan kazanma kodunuz:" +""+member.getMemberID());
+        message.setSubject(member.getFirst_name()+" Code");
+        message.setText("Hi! "+member.getFirst_name()+", you can use this code to earn points ->" +member.getMemberID());
         javaMailSender.send(message);
 
         return ResponseEntity.ok(member);

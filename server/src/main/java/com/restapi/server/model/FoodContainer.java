@@ -49,6 +49,8 @@ public class FoodContainer {
     private String status;
     @Column
     private String passCont;
+    @Column
+    private String estimation;
 
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")

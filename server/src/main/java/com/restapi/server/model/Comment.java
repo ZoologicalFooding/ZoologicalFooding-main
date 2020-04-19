@@ -22,6 +22,8 @@ public class Comment {
     private int commentId;
 
     @Column
+    private String yorumName;
+    @Column
     private String yorum;
 
     @Column
