@@ -63,6 +63,8 @@ public class DonatesServiceImpl implements DonatesService {
     @Override
     public void likeDonate(int id) {
         DonateTable donateTable = donatesDao.findById(id).get();
+        if(donateTable.getLikedStr()==null)
+            donateTable.setLikedStr("0");
         int like = Integer.parseInt(donateTable.getLikedStr());
         like = like + 1;
         donateTable.setLikedStr(like+"");
