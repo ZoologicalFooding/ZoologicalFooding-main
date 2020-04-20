@@ -137,7 +137,7 @@
 
                     var el = document.createElement('div');
                     el.className = 'marker';
-                    var coordinates = [Number(value.longitude), Number(value.latitude)];
+                    var coordinates = [parseFloat(value.longitude), parseFloat(value.latitude)];
 
                     if (value.type == "dog") {
                         el.className = 'markerDog';
