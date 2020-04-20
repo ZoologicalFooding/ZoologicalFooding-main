@@ -5,6 +5,8 @@ import com.restapi.server.model.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class CommentServiceImpl implements CommentService {
     private final CommentDao commentDao;
@@ -16,6 +18,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void addComment(Comment comment) {
+        comment.setCommentAddTime(new Date());
         commentDao.save(comment);
     }
 
