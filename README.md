@@ -13,13 +13,14 @@ Come, join us. Let's save this planet!
 
 ## Get Started !
 
+* [Start From The Rest API](http://restservices496.herokuapp.com/)
 * [Start From The Web Page](http://zoological-fooding.herokuapp.com/)
 * [Start From The Android App](https://github.com/ZoologicalFooding/ZoologicalFooding-android)
 ## Developers
 
 * [Muharrem Tolga Acar](https://github.com/TolgaAcar) *Front-End*
 * [Şükran Güler Saygılı](https://github.com/SukranSaygili) *Android*
-* [Onur Tetik](https://github.com/onurTe) *Back-End*
+* [Onur Tetik](https://github.com/onurTe) *Back-End / Rest API*
 * [Barış Önen](https://github.com/barisonen) *Hardware*
 
 
