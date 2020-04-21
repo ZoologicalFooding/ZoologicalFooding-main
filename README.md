@@ -1,6 +1,7 @@
 # ZoologicalFooding-main
 
 ![picture](img/map.PNG)
+![picture](img/mimari.png)
 
 
 ## What is / How To Use Zoological Fooding ?
