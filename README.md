@@ -1,7 +1,6 @@
 # ZoologicalFooding-main
 
 ![picture](img/map.PNG)
-![picture](img/mimari.png)
 
 
 ## What is / How To Use Zoological Fooding ?
@@ -23,6 +22,10 @@ Come, join us. Let's save this planet!
 * [Şükran Güler Saygılı](https://github.com/SukranSaygili) *Android*
 * [Onur Tetik](https://github.com/onurTe) *Back-End / Rest API*
 * [Barış Önen](https://github.com/barisonen) *Hardware*
+
+## System Architecture 
+
+![picture](img/mimari.png)
 
 ## Backlog
 * [Backlog](img/backlog.txt)
