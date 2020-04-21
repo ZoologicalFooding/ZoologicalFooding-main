@@ -23,3 +23,6 @@ Come, join us. Let's save this planet!
 * [Şükran Güler Saygılı](https://github.com/SukranSaygili) *Android*
 * [Onur Tetik](https://github.com/onurTe) *Back-End / Rest API*
 * [Barış Önen](https://github.com/barisonen) *Hardware*
+
+## Backlog
+* [Backlog](img/backlog.txt)
