@@ -3,6 +3,24 @@
 ![picture](img/map.PNG)
 
 
+## What is / How To Use Zoological Fooding ?
+
+This system is created with the purposes of preventing hunger of street animals, and environmental pollution.
+
+You can join and help us to fulfill our purposes by filling our containers, or -if you do not have time for it- just donating to our containers, so a volunteer of us can use that donation to fill our containers with delicious food!
+
+Come, join us. Let's save this planet!
+
+## Get Started !
+
+[Start From The Web Page](http://zoological-fooding.herokuapp.com/)
+
+## Developers
+
+* Muharrem Tolga Acar *Front-End*
+* Şükran Güler Saygılı *Android*
+* Onur Tetik *Back-End*
+* Barış Önen *Hardware*
 
 Restful Api
     
@@ -59,10 +77,6 @@ Restful Api
     https://restservices496.herokuapp.com/addFill
     https://restservices496.herokuapp.com/deleteFill/id
     https://restservices496.herokuapp.com/editFill/id
-
-
-
-
 
 Team Backlog: 
 
@@ -128,15 +142,3 @@ Sukran Guler SAYGILI:
 - Adding payment options on the mobile application,
 - And adding notification system.
 
-Issues:
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/1
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/2
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/10
-
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/3
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/4
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/5
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/6
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/7
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/8
-https://github.com/ZoologicalFooding/ZoologicalFooding-main/issues/9
