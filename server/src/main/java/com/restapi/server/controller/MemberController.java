@@ -69,8 +69,8 @@ public class MemberController {
     public ResponseEntity<Member> updatePoint(@RequestBody(required = false) Member mem, @PathVariable int id) {
         Member member = memberService.getMemberById(id);
         int point = Integer.parseInt(member.getPointStr());
-        int addPoint = Integer.parseInt(mem.getPointStr());
-        point = point + addPoint;
+
+        point = point + 50;
         member.setPointStr(point+"");
         memberService.addMember(member);
         return ResponseEntity.ok(member);

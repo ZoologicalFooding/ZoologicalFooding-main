@@ -34,5 +34,9 @@ public class ProCodeController {
         proCodeService.addProCode(proCodeTable);
         return ResponseEntity.ok(proCodeTable.getProCodeCol());
     }
+
+    
+
+
 }
 
