@@ -25,7 +25,7 @@ Come, join us. Let's save this planet!
 
 ## System Architecture 
 
-![picture](img/mimari.png)
+![picture](img/Mimari.jpg)
 
 ## Backlog
 * [Backlog](img/backlog.txt)
